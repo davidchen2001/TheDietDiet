@@ -1,0 +1,97 @@
+
+.ProfilePage {
+    height: 100vw;
+    width: 100vw;
+    display: flex;
+    color: rgb(239, 238, 238);
+}
+
+.ProfilePage__Aside {
+  font-size: 1.3vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+    width: 85%;
+    background-color: rgb(98, 98, 98);
+    overflow: auto;
+  }
+  
+  .ProfilePage__Form {
+    position:fixed;
+    top:0;
+    bottom:0;
+    right:0;
+    width: 15%;
+
+    background-color: rgb(50, 100, 180);
+    padding: 25px 40px;
+    overflow: none;
+  }
+
+  .ProfilePage__Form:before{
+    object-fit:cover;
+    text-align:center;
+    overflow:hidden;
+
+    content: '';
+    /*display: block;*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("CodeGif.gif");
+    background-size:cover;
+    opacity: 0.5;
+    z-index:-1;
+  }
+
+  #UserPictureDiv{
+      width:15vw;
+      height:15vw;
+      border-color:black;
+      border-radius:20px;
+      background-color:white;
+      float:left;
+
+      color:black;
+  }
+
+  #UserInfoDiv{
+    width:50vw;
+    background-color:rgb(70,70,70);
+    float:left;
+    height:10vw;
+    border-radius:20px;
+    margin-top:5%;
+
+    margin-bottom:5%;
+  }
+
+  #HelperInfoDiv{
+    float:left;
+    width: 22vw;
+    height: 10vw;
+    background-color:rgb(70,70,70);
+    border-radius:20px;
+
+  }
+
+  table, td, tr{
+    border: 1px solid aquamarine;
+    overflow:none;
+    margin-left:3%;
+  }
+
+  .profileDiv{
+    background-color:rgb(80,80,80);
+  }
+
+
+  .photoGallery{
+    margin-left:2vw;
+    width:83vw;
+  }
+ 
+  
