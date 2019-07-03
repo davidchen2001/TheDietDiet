@@ -1,103 +1,62 @@
-import React from 'react';
-//import logo from './logo.svg';
+import React, {Component} from 'react';
+
 import './App.css';
 import Popup from 'reactjs-popup'
-import Amplify from 'aws-amplify';
+import DietDietLogo from '../src/DietDietLogo.jpg'
+import Nut from '../src/duncandoughnuts2.png'
 
 
-const Greetings = (props) => <div> Howdy! {props.first} {props.last}!</div>;
+import { BrowserRouter as Router, Route, Link, NavLink } from  'react-router-dom'
+import SignInForm from './pages/SignInForm';
+import SignUpForm from './pages/SignUpForm';
+import CafesPage from './pages/CafesPage';
 
+import { Provider } from 'react-redux';
+import store from './store';
 
-function App() {
+import { loadUser } from './Actions/AuthAction';
+class App extends Component{
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
+  render(){
   return (
-    <div className="App">
-      <div className="App__Aside"></div>
-      <div className="App__Form">
-      <div className="PageSwitcher">
-        <a href="#" className="PageSwitcher__Item">Sign In Here</a>
-        <a href="#" className="PageSwitcher__Item PageSwitcher__Item--Active">Sign Up Here</a>
-          </div>
-
-        <div className="FormTitle">
-          <a href="#" className="FormTitle__Link">Sign In</a>or<a href="#"
-          className="FormTitle__Link FormTitle__Link--Active">Sign Up</a>
+    <Router>
+      <Provider store={store}>
+      <div className="App">
+        <div className="App__Aside">
+          <img src={Nut} alt=" "/>
         </div>
+        <div className="App__Form">
+        <div className="PageSwitcher">
+          <NavLink to ="/sign-in" activeClassName="PageSwitcher__Item--Active"
+           className="PageSwitcher__Item">Sign In</NavLink>
+          <NavLink exact to ="/" activeClassName="PageSwitcher__Item--Active"
+           className="PageSwitcher__Item">Sign Up</NavLink>
+            </div>
 
-        <div className="FormCenter">
-            <div className="FormField">
-              <label className="FormField__Label"htmlfor="name">Full Name</label>
-              <input type="text" id="name" className="FormField__Input" placeholder="Enter full name here" name="name"/>
-              </div>
+          <div className="FormTitle">
+            <NavLink to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink>or
+            <NavLink exact to="/"activeClassName="FormTitle__Link--Active" 
+            className="FormTitle__Link FormTitle">Sign Up</NavLink>
+          </div>
+    
+          <Route exact path="/" component={SignUpForm}>
+            </Route>
 
-              <div className="FormField">
-              <label className="FormField__Label"htmlfor="password">Password</label>
-              <input type="text" id="password" className="FormField__Input" placeholder="Enter password here" name="password"/>
-              </div>
+          <Route path="/sign-in" component={SignInForm}>
+          </Route>
 
-              <div className="FormField">
-              <label className="FormField__Label"htmlfor="email">Email</label>
-              <input type="text" id="email" className="FormField__Input" placeholder="Enter email here" name="email"/>
-              </div>
-
-          <label className="FormField__CheckboxLabel">
-            <input className="FormField__Checkbox" type="checkbox" name="hasAgreed"/> I have read and agreed to the 
-            <a href=""className="FormField__TermsLink"> terms of service</a>
-            </label>    
- 
-
-            <div className="FormField">
-              <button className="FormField__Button mr-30"> Sign up</button><a href="#"
-              className="FormField__Link">I'm already a member</a>
-              </div>
+          <Route path ="/home" component={CafesPage}>
+          </Route>
 
           </div>
-        
-       
-
         </div>
-    </div>
+        </Provider>
+    </Router>
   );
-
+  }
 }
 
 
-
 export default App;
-
-  /*
-  const PopupExample =  () => (
-    <Popup trigger={<button> Trigger</button>} position="right center">
-      <div><Greetings first="John" last="Smith" /></div>
-    </Popup>
-  )
-        <header className="App-header">
-          
-           
-          <Greetings first="John" last="Smith" />
-          
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            
-          >
-            Learn React
-          </a>
-        </header>
-
-
-          <div className="FormCenter">
-          <form className="FormFields" onSubmit={this.handleSubmit}>
-            <div className="FormField">
-              <label className="FormField__Label"htmlfor="name">Full Name</label>
-              <input type="text" id="name" className="FormField__Input" placeholder="Enter full name here" name="name"/>
-              </div>
-            </form>
-          </div>
-
-        */
