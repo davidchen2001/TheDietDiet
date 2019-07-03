@@ -1,27 +1,18 @@
 class User {
 
-    constructor(firstName, lastName, username, emailAddress) {
+    constructor(name, username, emailAddress) {
 
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name = name;
         this.username = username;
         this.emailAddress = emailAddress;
 
-    } get firstName() {
+    } get name() {
 
-        return this.firstName;
+        return this.name;
 
-    } set firstName(firstName) {
+    } set name(name) {
 
-        this.firstName = firstName;
-
-    } get lastName() {
-
-        return this.lastName;
-
-    } set lastName(lastName) {
-
-        this.lastName = lastName;
+        this.name = name;
 
     } get username() {
 
@@ -45,29 +36,30 @@ class User {
 
 class Member extends User {
 
-    constructor(firstName, lastName, username, emailAddress, homeHelper, workHelper, status) {
+    constructor(name, username, emailAddress, homeHelper, workHelper, status) {
         
         this.homeHelper = homeHelper;
         this.workHelper = workHelper;
         this.status = status; 
         
-        super(firstName, lastName, username, emailAddress);
+        super(name, username, emailAddress);
         
-    } get homeHelper() {
+    } get homeHelper() { //Returns Helper object
 
         return this.homeHelper;
 
-    } set homeHelper(homeHelper) {
+    } set homeHelper(homeHelper) { //Stores Helper object
 
         this.homeHelper = homeHelper; 
 
-    } get workHelper() {
+    } get workHelper() { //Returns Helper object
 
         return this.workHelper;
 
-    } set workHelper(workHelper) {
+    } set workHelper(workHelper) { //Stores Helper object
 
         this.workHelper = workHelper;
+
     } get status() {
 
         return this.status;
@@ -82,18 +74,18 @@ class Member extends User {
 
 class Helper extends User {
 
-    constructor(firstName, lastName, username, emailAddress, member, helperType) {
+    constructor(name, username, emailAddress, member, helperType) {
         
         this.member = member;
         this.helperType = helperType; 
         
-        super(firstName, lastName, username, emailAddress);
+        super(name, username, emailAddress);
         
-    } get member() {
+    } get member() { //Returns Member object
 
         return this.member;
 
-    } set member(member) {
+    } set member(member) { //Stores Member object
 
         this.member = member;
 
