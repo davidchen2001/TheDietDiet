@@ -1,68 +1,53 @@
-import React from 'react';
+import React, {Component} from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import Popup from 'reactjs-popup'
 import Amplify from 'aws-amplify';
 
+import { BrowserRouter as Router, Route, Link, NavLink } from  'react-router-dom'
+import SignInForm from './pages/SignInForm';
+import SignUpForm from './pages/SignUpForm';
 
-const Greetings = (props) => <div> Howdy! {props.first} {props.last}!</div>;
 
 
-function App() {
+//const Greetings = (props) => <div> Howdy! {props.first} {props.last}!</div>;
+
+class App extends Component{
+  render(){
   return (
-    <div className="App">
-      <div className="App__Aside"></div>
-      <div className="App__Form">
-      <div className="PageSwitcher">
-        <a href="#" className="PageSwitcher__Item">Sign In Here</a>
-        <a href="#" className="PageSwitcher__Item PageSwitcher__Item--Active">Sign Up Here</a>
+    <Router>
+      <div className="App">
+        <div className="App__Aside"></div>
+        <div className="App__Form">
+        <div className="PageSwitcher">
+          <NavLink to ="/sign-in" activeClassName="PageSwitcher__Item--Active"
+           className="PageSwitcher__Item">Sign In</NavLink>
+          <NavLink exact to ="/" activeClassName="PageSwitcher__Item--Active"
+           className="PageSwitcher__Item">Sign Up</NavLink>
+            </div>
+
+          <div className="FormTitle">
+            <NavLink to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink>or
+            <NavLink exact to="/"activeClassName="FormTitle__Link--Active" 
+            className="FormTitle__Link FormTitle">Sign Up</NavLink>
           </div>
 
-        <div className="FormTitle">
-          <a href="#" className="FormTitle__Link">Sign In</a>or<a href="#"
-          className="FormTitle__Link FormTitle__Link--Active">Sign Up</a>
-        </div>
+          <Route exact path="/" component={SignUpForm}>
+            </Route>
 
-        <div className="FormCenter">
-            <div className="FormField">
-              <label className="FormField__Label"htmlfor="name">Full Name</label>
-              <input type="text" id="name" className="FormField__Input" placeholder="Enter full name here" name="name"/>
-              </div>
-
-              <div className="FormField">
-              <label className="FormField__Label"htmlfor="password">Password</label>
-              <input type="text" id="password" className="FormField__Input" placeholder="Enter password here" name="password"/>
-              </div>
-
-              <div className="FormField">
-              <label className="FormField__Label"htmlfor="email">Email</label>
-              <input type="text" id="email" className="FormField__Input" placeholder="Enter email here" name="email"/>
-              </div>
-
-          <label className="FormField__CheckboxLabel">
-            <input className="FormField__Checkbox" type="checkbox" name="hasAgreed"/> I have read and agreed to the 
-            <a href=""className="FormField__TermsLink"> terms of service</a>
-            </label>    
- 
-
-            <div className="FormField">
-              <button className="FormField__Button mr-30"> Sign up</button><a href="#"
-              className="FormField__Link">I'm already a member</a>
-              </div>
+          <Route path="/sign-in" component={SignInForm}>
+          </Route>
 
           </div>
-        
-       
-
         </div>
-    </div>
+    </Router>
   );
-
+  }
 }
 
-
-
 export default App;
+
+
 
   /*
   const PopupExample =  () => (
