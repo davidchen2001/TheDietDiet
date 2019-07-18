@@ -1,6 +1,7 @@
 
 .App {
   height: 100vh;
+  /*height: 100;*/
   display: flex;
   color: white;
 }
@@ -12,7 +13,7 @@
 
 .App__Form {
   width: 65%;
-  background-color: #eb8982;
+  background-color: #6adfe7;
   padding: 25px 40px;
   overflow: auto;
 }

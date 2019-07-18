@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Popup from 'reactjs-popup'
 import Amplify from 'aws-amplify';
+import DietDietLogo from '../src/DietDietLogo.jpg'
 
 import { BrowserRouter as Router, Route, Link, NavLink } from  'react-router-dom'
 import SignInForm from './pages/SignInForm';
@@ -17,7 +18,9 @@ class App extends Component{
   return (
     <Router>
       <div className="App">
-        <div className="App__Aside"></div>
+        <div className="App__Aside">
+          <img src={DietDietLogo} alt=" "/>
+        </div>
         <div className="App__Form">
         <div className="PageSwitcher">
           <NavLink to ="/sign-in" activeClassName="PageSwitcher__Item--Active"

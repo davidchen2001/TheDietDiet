@@ -8,8 +8,9 @@ class SignInForm extends Component {
       email:'',
       password:''
   };
-  
+
   this.handleChange = this.handleChange.bind(this);
+  this.handleSubmit = this.handleSubmit.bind(this);
 }
 
 handleChange(e){
@@ -20,11 +21,18 @@ handleChange(e){
   this.setState({[name]:value});
 }
 
+handleSubmit(e){
+  e.preventDefault();
+
+  console.log('The form was submitted with following data:');
+  console.log(this.state);
+}
+
 
     render(){
         return(
             <div className="FormCenter">
-            <form className="FormFields" onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
             <div className="FormField">
               <label className="FormField__Label"htmlfor="email">Email/Username</label>
               <input type="text" id="email" className="FormField__Input" placeholder="Enter email/username here" name="email"

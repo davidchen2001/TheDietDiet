@@ -14,6 +14,33 @@ body {
   margin-right: 20px !important;
 }
 
+.App__Aside img{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    margin-bottom: auto;
+    height: 450px;
+    width: 300px;
+    object-fit: cover;
+    justify-content: center;
+    animation: DietDietLogo-spin infinite 5s linear;
+    animation-direction:alternate; 
+}
+
+@keyframes DietDietLogo-spin {
+  from {
+    /*transform: rotate(0deg);*/
+    -webkit-transform:scale(1);
+  }
+  to {
+    /*transform: rotate(360deg);*/
+    -webkit-transform:scale(1.2);
+  }
+  
+}
+
 
 /*
 *{
