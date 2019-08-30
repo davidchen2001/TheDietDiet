@@ -49,11 +49,13 @@ handleSubmit(e){
             
 
             <div className="FormField">
-              <button className="FormField__Button mr-30">Log In</button><Link exact to="/"
+              <Link to = '/home'></Link> <button className="FormField__Button mr-30">Log In</button><Link exact to="/home"
               className="FormField__Link">Register an account</Link>
               </div>
               </form>
              </div>
+
+            
          );
 
      }

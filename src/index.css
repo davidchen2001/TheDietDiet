@@ -2,13 +2,16 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+ /* font-family: "Roboto", sans-serif;*/
+ font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 
 body {
+    background-color: #ffffff;
   margin: 0;
   padding: 0;
 }
+
 
 .mr-20 {
   margin-right: 20px !important;
@@ -21,12 +24,20 @@ body {
     margin-right: auto;
     margin-top: 100px;
     margin-bottom: auto;
-    height: 450px;
-    width: 300px;
+    height: 430px;
+    width: 430px;
     object-fit: cover;
     justify-content: center;
-    animation: DietDietLogo-spin infinite 5s linear;
+    animation: DietDietLogo-spin infinite 3s linear;
     animation-direction:alternate; 
+}
+
+.button-group button img{
+  display: flex;
+  width: 50px;
+  height: 50px;
+  animation: button-fadeIn 10s linear;
+  
 }
 
 @keyframes DietDietLogo-spin {
@@ -36,10 +47,16 @@ body {
   }
   to {
     /*transform: rotate(360deg);*/
-    -webkit-transform:scale(1.2);
+    -webkit-transform:scale(1.15);
   }
   
 }
+
+@keyframes button-fadeIn {
+  from{opacity: 0};
+  to{opacity: 1};
+}
+
 
 
 /*

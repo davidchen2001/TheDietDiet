@@ -4,10 +4,13 @@ import './App.css';
 import Popup from 'reactjs-popup'
 import Amplify from 'aws-amplify';
 import DietDietLogo from '../src/DietDietLogo.jpg'
+import Nut from '../src/duncandoughnuts2.png'
+
 
 import { BrowserRouter as Router, Route, Link, NavLink } from  'react-router-dom'
 import SignInForm from './pages/SignInForm';
 import SignUpForm from './pages/SignUpForm';
+import CafesPage from './pages/CafesPage';
 
 
 
@@ -19,7 +22,7 @@ class App extends Component{
     <Router>
       <div className="App">
         <div className="App__Aside">
-          <img src={DietDietLogo} alt=" "/>
+          <img src={Nut} alt=" "/>
         </div>
         <div className="App__Form">
         <div className="PageSwitcher">
@@ -41,12 +44,16 @@ class App extends Component{
           <Route path="/sign-in" component={SignInForm}>
           </Route>
 
+          <Route path ="/home" component={CafesPage}>
+          </Route>
+
           </div>
         </div>
     </Router>
   );
   }
 }
+
 
 export default App;
 
