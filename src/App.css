@@ -1,18 +1,19 @@
 
 .App {
   height: 100vh;
+  /*height: 100;*/
   display: flex;
   color: white;
 }
 
 .App__Aside {
   width: 35%;
-  background-color: #66DAC7;
+  background-color: #ff9aa2;
 }
 
 .App__Form {
   width: 65%;
-  background-color: #d4736c;
+  background-color: rgb(139, 238, 238);
   padding: 25px 40px;
   overflow: auto;
 }
@@ -36,7 +37,7 @@
 }
 
 .PageSwitcher__Item--Active {
-  background-color: #5ED0C0;
+  background-color: rgb(113, 233, 143);
   color: white;
 }
 
@@ -105,7 +106,7 @@
 }
 
 .FormField__Button {
-  background-color: rgb(189, 109, 221);
+  background-color: rgb(245, 151, 179);
   color: white;
   border: none;
   outline: none;
@@ -145,6 +146,28 @@
   margin-left: 5px;
 }
 
+.DropDown {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10%;
+}
+
+.DropDown__Item{
+  margin-left: 80%;
+  background-color: rgb(176, 38, 204);
+  color: rgb(159, 255, 255);
+  padding: 25px 25px;
+  cursor: pointer;
+  font-size: .9em;
+  border: none;
+  outline: none;
+  display: inline-block;
+  text-decoration: none;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
 
 /*.App {
   text-align: center;

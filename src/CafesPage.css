@@ -1,0 +1,50 @@
+
+.CafesPage {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    color: rgb(139, 238, 238);
+}
+
+.CafesPage__Aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+    width: 15%;
+    background-color: rgb(146, 250, 224);
+    overflow: auto;
+  }
+  
+  .CafesPage__Form {
+    position:fixed;
+    top:0;
+    bottom:0;
+    right:0;
+    width: 85%;
+    background-color: rgb(70, 70, 70);
+    padding: 25px 40px;
+    overflow: auto;
+  }
+
+  .btn-group button {
+    background-color: rgb(106, 0, 245);
+    border: 1px solid rgb(94, 255, 215);
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    width: 100%;
+    display: block; /* Make the buttons appear below each other */
+  }
+
+  .btn-group button:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+  }
+  
+  /* Add a background color on hover */
+  .btn-group button:hover {
+    background-color: rgb(94, 255, 215);
+  }
+
+ 
+  
