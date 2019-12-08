@@ -27,8 +27,8 @@ class SignUpForm extends Component {
       errors: {}
   };
 
-  this.handleChange = this.handleChange.bind(this);
-  this.handleSubmit = this.handleSubmit.bind(this);
+  this.onChange = this.onChange.bind(this)
+  this.onSubmit = this.onSubmit.bind(this)
 }
 
 static propTypes = {

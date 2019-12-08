@@ -5,7 +5,7 @@ const config = require('config');
 const jwt = require('jsonwebtoken');
 
 //For now just have user sign up and authentication, implement Member and Helper later 
-const User = require('../../models/UserModel') 
+const User = require('../Database/models/UserModel') 
 //const Member = require('../Database/models/Member');
 //const Helper = require('../Database/models/Helper');
 /*

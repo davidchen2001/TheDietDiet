@@ -3,9 +3,9 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
-const auth = require('../../middleware/auth')
+const auth = require('../Database/middleware/auth')
 
-const User = require('../../models/UserModel') //For now just have user sign up and authentication 
+const User = require('../Database/models/UserModel') //For now just have user sign up and authentication 
 //const Member = require('../Database/models/Member');
 //const Helper = require('../Database/models/Helper');
 /*

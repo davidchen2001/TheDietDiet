@@ -11,7 +11,6 @@ import SignInForm from './pages/SignInForm';
 import SignUpForm from './pages/SignUpForm';
 import CafesPage from './pages/CafesPage';
 
-import Popup from 'reactjs-popup'
 //import Amplify from 'aws-amplify';
 import { Provider } from 'react-redux';
 import store from './store';
@@ -27,7 +26,7 @@ class App extends Component{
   render(){
   return (
     <Router>
-      <Provider store={store}></Provider>
+      <Provider store={store}>
       <div className="App">
         <div className="App__Aside">
           <img src={Nut} alt=" "/>
@@ -57,6 +56,7 @@ class App extends Component{
 
           </div>
         </div>
+        </Provider>
     </Router>
   );
   }
