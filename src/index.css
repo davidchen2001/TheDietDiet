@@ -1,3 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+
+* {
+  box-sizing: border-box;
+ /* font-family: "Roboto", sans-serif;*/
+ font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+body {
+    background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+
+.mr-20 {
+  margin-right: 20px !important;
+}
+
+.App__Aside img{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    margin-bottom: auto;
+    height: 430px;
+    width: 430px;
+    object-fit: cover;
+    justify-content: center;
+    animation: DietDietLogo-spin infinite 3s linear;
+    animation-direction:alternate; 
+}
+
+.button-group button img{
+  display: flex;
+  width: 50px;
+  height: 50px;
+  animation: button-fadeIn 10s linear;
+  
+}
+
+@keyframes DietDietLogo-spin {
+  from {
+    /*transform: rotate(0deg);*/
+    -webkit-transform:scale(1);
+  }
+  to {
+    /*transform: rotate(360deg);*/
+    -webkit-transform:scale(1.15);
+  }
+  
+}
+
+@keyframes button-fadeIn {
+  from{opacity: 0};
+  to{opacity: 1};
+}
+
+
+
+/*
+*{
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -11,3 +77,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+*/
