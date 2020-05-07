@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const config = require('config');
-const jwt = require('jsonwebtoken');
-const auth = require('../../Database/middleware/auth')
 
 const User = require('../../Database/models/UserModel') //For now just have user sign up and authentication 
 
-router.get('/', auth, (req, res) => {
-    User.findById(req.user.id)
+router.get('/', (req, res) => {
+
+  const { emailAddress } = req.body
+
+    User.findOne( {emailAddress} )
       .then(user => res.json(user));
+    return 0 
   });
 
 module.exports = router
