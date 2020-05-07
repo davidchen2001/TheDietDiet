@@ -46,11 +46,9 @@ handleSubmit(e){
               value={this.state.password} onChange={this.handleChange}/>
               </div>
 
-            
-
             <div className="FormField">
-              <Link to = '/home'></Link> <button className="FormField__Button mr-30">Log In</button><Link exact to="/home"
-              className="FormField__Link">Register an account</Link>
+              <button className="FormField__Button mr-30" >Log In</button>
+              <Link exact to="/home" className="FormField__Link">Register an account</Link>
               </div>
               </form>
              </div>
