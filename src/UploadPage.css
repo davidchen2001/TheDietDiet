@@ -1,0 +1,29 @@
+
+.UploadPage {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    color: rgb(139, 238, 238);
+}
+
+.UploadPage__Aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+    width: 85%;
+    background-color: rgb(100, 100, 100);
+    overflow: auto;
+  }
+  
+  .UploadPage__Form {
+    position:fixed;
+    top:0;
+    bottom:0;
+    right:0;
+    width: 15%;
+
+    background-color: rgb(100, 220, 250);
+    padding: 25px 40px;
+    overflow: auto;
+  }
