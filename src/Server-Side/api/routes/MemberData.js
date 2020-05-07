@@ -1,7 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const User = require('../../Database/models/UserModel') //For now just have user sign up and authentication 
+const User = require('../../Database/models/UserModel') 
+
+/**
+ * @route   POST /user
+ * @desc    Get User Data 
+ * @access  Public
+ */
 
 router.get('/', (req, res) => {
 
@@ -9,7 +15,7 @@ router.get('/', (req, res) => {
 
     User.findOne( {emailAddress} )
       .then(user => res.json(user));
-    return 0 
+     
   });
 
 module.exports = router

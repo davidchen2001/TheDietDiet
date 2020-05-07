@@ -8,12 +8,12 @@ const auth = require('../../Database/middleware/auth')
 const User = require('../../Database/models/UserModel') //For now just have user sign up and authentication 
 //const Member = require('../Database/models/Member');
 //const Helper = require('../Database/models/Helper');
-/*
-router.all('/', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next()
-});*/
+
+/**
+ * @route   POST /login
+ * @desc    Register user
+ * @access  Public
+ */
 
 router.post('/', (req, res) => {
   //const { username, emailAddress, password} = req.body;

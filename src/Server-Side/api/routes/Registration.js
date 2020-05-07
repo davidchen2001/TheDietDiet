@@ -10,7 +10,7 @@ const User = require('../../Database/models/UserModel')
 //const Helper = require('../Database/models/Helper');
 
 /**
- * @route   POST api/registration
+ * @route   POST /registration
  * @desc    Register user
  * @access  Public
  */
@@ -30,8 +30,6 @@ router.post('/', (req, res) => {
        {
         return res.status(400).json({ msg: 'User already exists' });
        }
-       
-       //return res.status(200).json({ msg: 'Successful Registration' });
        
        /*
        if (!isHelper) {
