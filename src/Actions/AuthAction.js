@@ -119,3 +119,33 @@ export const tokenConfig = getState => {
 
   return config;
 };
+
+export const retrieveUserData = ({ emailAddress }) => dispatch => {
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  // Request body - User has already been logged in by this point so data only needs to be retrieved, not authenticated 
+  const body = JSON.stringify({ emailAddress });
+
+  axios
+    .post('http://localhost:5000/user', body, config)
+    .then(res =>
+      dispatch({
+        type: USER_DATA_RETRIEVED,
+        payload: res.data
+      })
+    )
+    .catch(err => {
+      dispatch(
+        returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL')
+      );
+      dispatch({
+        type: LOGIN_FAIL
+      });
+    });
+
+}; 

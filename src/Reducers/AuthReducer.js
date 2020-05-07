@@ -53,5 +53,6 @@ export default function(state = initialState, action) {
         };
       default:
         return state;
+      case USER_DATA_RETRIEVED: 
     }
   }
