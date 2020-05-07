@@ -4,8 +4,6 @@ const mysql = require('mysql');
 const config = require('config')
 var bodyParser = require('body-parser')
 var cors = require('cors')
-//const path = require("path");
-// https://github.com/mysqljs/mysql
 
 // Initialize the app
 const app = express();
@@ -25,15 +23,18 @@ mongoose
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
 
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
+
+const registrationRoute = require('../api/routes/Registration')
+const loginRoute = require('../api/routes/Login')
 
 //API Routes
-app.use('/Registration', require('../AuthRoutes/Registration'))
-app.use('/Login', require('../AuthRoutes/Login'))
+app.use('/registration', registrationRoute)
+app.use('/login', loginRoute)
 
 // Start the server
-app.listen(port, () => {
- console.log('Server is listening on port ' + port);
+app.listen(PORT, () => {
+ console.log('Server is listening on port ' + PORT);
  console.log("Connected!");
 
 });
