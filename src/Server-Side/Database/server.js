@@ -27,8 +27,9 @@ mongoose
 
 const port = process.env.PORT || 5000;
 
-app.use('/UserSignUp', require('../AuthRoutes/UserSignUp'))
-app.use('/Auth', require('../AuthRoutes/Auth'))
+//API Routes
+app.use('/Registration', require('../AuthRoutes/Registration'))
+app.use('/Login', require('../AuthRoutes/Login'))
 
 // Start the server
 app.listen(port, () => {

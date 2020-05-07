@@ -25,7 +25,12 @@ router.post('/', (req, res) => {
 
    User.findOne({ emailAddress })
    .then(user => {
-       if(user) return res.status(400).json({ msg: 'User already exists' });
+       if(user)
+       {
+        return res.status(400).json({ msg: 'User already exists' });
+       }
+       
+       //return res.status(200).json({ msg: 'Successful Registration' });
        
        /*
        if (!isHelper) {
@@ -63,6 +68,7 @@ router.post('/', (req, res) => {
             });
         })
       })
+
     })
 });
 
