@@ -17,7 +17,7 @@ const User = require('../../Database/models/UserModel')
 
 
 router.post('/', (req, res) => {
-  const { name, username, emailAddress, password } = req.body;
+  const { name, username, emailAddress, password, isHelper } = req.body;
 
   // Simple validation
   if (String(name).length === 0 || String(username).length === 0 || String(emailAddress).length === 0 || String(password).length === 0) { //|| !username || !emailAddress || !password
@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
            const newUser = new Helper({name, username, emailAddress, password});  
        }*/
 
-       const newUser = new User({name, username, emailAddress, password});
+       const newUser = new User({name, username, emailAddress, password, isHelper});
 
       // Create salt & hash
       bcrypt.genSalt(10, (err, salt) => {
@@ -59,7 +59,8 @@ router.post('/', (req, res) => {
                       id: user.id,
                       name: user.name,
                       username: user.username,
-                      emailAddress: user.emailAddress
+                      emailAddress: user.emailAddress,
+                      isHelper: user.isHelper
                     }
                   });
                 }

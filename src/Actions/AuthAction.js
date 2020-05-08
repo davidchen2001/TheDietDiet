@@ -9,7 +9,9 @@ import {
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
-  REGISTER_FAIL
+  REGISTER_FAIL,
+  USER_DATA_RETRIEVED
+
 } from './types';
 
 // Check token & load user
@@ -34,7 +36,7 @@ export const loadUser = () => (dispatch, getState) => {
 };
 
 // Register User
-export const register = ({ name, username, emailAddress, password }) => dispatch => {
+export const register = ({ name, username, emailAddress, password, isHelper }) => dispatch => {
   // Headers
   const config = {
     headers: {
@@ -43,7 +45,7 @@ export const register = ({ name, username, emailAddress, password }) => dispatch
   };
 
   // Request body
-  const body = JSON.stringify({ name, username, emailAddress, password });
+  const body = JSON.stringify({ name, username, emailAddress, password, isHelper });
   //http://localhost:5000
   axios
     .post('http://localhost:5000/registration', body, config)
