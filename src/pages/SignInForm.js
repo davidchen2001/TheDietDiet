@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-//import { signIn } from './ClientFunctions.js';
 
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-//import { signUp } from './ClientFunctions.js';
 import { login } from '../Actions/AuthAction'; 
 import { clearErrors } from '../Actions/ErrorAction';
-//import { REGISTER_FAIL } from '../Actions/types.js';
-import { Alert } from 'reactstrap';
+
+import AlertComponent from './Components/AlertComponent'
 
 class SignInForm extends Component {
   constructor(){
@@ -19,18 +17,10 @@ class SignInForm extends Component {
       password:''
   };
   
-  //this.handleChange = this.handleChange.bind(this);
+  
   this.onChange = this.onChange.bind(this)
   this.onSubmit = this.onSubmit.bind(this)
 }
-
-/*handleChange(e){
-  let target = e.target;
-  let value = target.type === 'checkbox' ? target.checked : target.value;
-  let name = target.name;
-
-  this.setState({[name]:value});
-}*/
 
 static propTypes = {
   isAuthenticated: PropTypes.bool,
@@ -89,9 +79,7 @@ onSubmit(e) {
             <div className="FormCenter">
             <form className="FormFields" onSubmit={this.onSubmit}>
 
-            {this.state.msg ? (
-              <Alert color = "danger" >{JSON.stringify(this.state.msg)}</Alert>
-              ) : null}
+            {this.state.msg ? (<AlertComponent color = "danger" text = {JSON.stringify(this.state.msg)}></AlertComponent>) : null}
 
             <div className="FormField">
               <label className="FormField__Label"htmlFor="email">Email/Username</label>

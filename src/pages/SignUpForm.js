@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-//import { signUp } from './ClientFunctions.js';
 import { register } from '../Actions/AuthAction';
 import { clearErrors } from '../Actions/ErrorAction';
-//import { REGISTER_FAIL } from '../Actions/types.js';
-import { Alert } from 'reactstrap';
+
+import AlertComponent from './Components/AlertComponent';
 
 class SignUpForm extends Component {
   constructor(){
@@ -44,7 +43,7 @@ componentDidUpdate(prevProps) {
   if (error !== prevProps.error) {
     if(error.id === 'REGISTER_FAIL') {
       this.setState({ msg: error.msg }); 
-
+      
     } else {
       this.setState({ msg: null });
       //this.props.clearErrors();
@@ -77,7 +76,8 @@ onSubmit(e) {
     name: this.state.name,
     username: this.state.username,
     emailAddress: this.state.emailAddress,
-    password: this.state.password
+    password: this.state.password,
+    isHelper: this.state.isHelper
     /*
     memberStatus: this.state.memberStatus,
     helperStatus: this.state.helperStatus,
@@ -91,9 +91,8 @@ onSubmit(e) {
   console.log("Signed Up")
   console.log('The form was submitted with following data:');
   console.log(this.state);
+  
 }
-
-
 
 render(){
   return(
@@ -101,7 +100,7 @@ render(){
       <form onSubmit={this.onSubmit} className="FormFields" onSubmit={this.onSubmit}>
 
       {this.state.msg ? (
-      <Alert color = "danger" >{JSON.stringify(this.state.msg)}</Alert>
+      <AlertComponent color = "danger" text = {JSON.stringify(this.state.msg)}></AlertComponent>
       ) : null}
 
       <div className="FormField">
@@ -127,7 +126,7 @@ render(){
 
       <div className="FormField">
       <label className="FormField__CheckboxLabel">
-      <input className="FormField__Checkbox" type="checkbox" name="isHelper"/> I am signing up to be a DietDiet 
+      <input className="FormField__Checkbox" type="checkbox" name="isHelper" value = {this.state.isHelper} onChange = {this.onChange} /> I am signing up to be a DietDiet 
       <a href=""className="FormField__TermsLink"> helper</a>
       </label>    
       </div>
