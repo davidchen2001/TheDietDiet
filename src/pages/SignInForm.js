@@ -30,7 +30,7 @@ static propTypes = {
 }
 
 componentDidUpdate(prevProps) {
-
+  
   const { error } = this.props;
   if (error !== prevProps.error) {
     if(error.id === 'LOGIN_FAIL') {
@@ -38,7 +38,6 @@ componentDidUpdate(prevProps) {
 
     } else {
       this.setState({ msg: null });
-      //this.props.clearErrors();
     }
   }
 
@@ -57,33 +56,34 @@ onSubmit(e) {
   e.preventDefault()
 
   const newUser = {
-    //name: this.state.name,
-    //username: this.state.username,
     emailAddress: this.state.email,
     password: this.state.password,
-    /*
-    memberStatus: this.state.memberStatus,
-    helperStatus: this.state.helperStatus,
-    homeHelper: this.state.homeHelper,
-    workHelper: this.state.workHelper,
-    helperType: this.state.helperType,
-    memberBeingHelped: this.state.memberBeingHelped, */
+    
   }
 
   this.props.login(newUser);
+  this.state.msg = "Logged In!"
   console.log("Signed In")
 }
 
     render(){
+      const msg = this.state.msg 
+
         return(
             <div className="FormCenter">
             <form className="FormFields" onSubmit={this.onSubmit}>
 
-            {this.state.msg ? (<AlertComponent color = "danger" text = {JSON.stringify(this.state.msg)}></AlertComponent>) : null}
+            {msg === "Logged In!" ? (
+            <AlertComponent color = 'success' text = {JSON.stringify(msg)}></AlertComponent>
+            ) : null }
+
+            {msg && msg !== "Logged In!"? (
+            <AlertComponent color = 'danger' text = {JSON.stringify(msg)}></AlertComponent>
+            ) : null }
 
             <div className="FormField">
-              <label className="FormField__Label"htmlFor="email">Email/Username</label>
-              <input type="email" id="email" className="FormField__Input" placeholder="Enter email/username here" name="email"
+              <label className="FormField__Label"htmlFor="email">Email</label>
+              <input type="email" id="email" className="FormField__Input" placeholder="Enter email here" name="email"
               value={this.state.email} onChange={this.onChange}/>
               </div>
 
