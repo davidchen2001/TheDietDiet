@@ -1,14 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose'); 
-const mysql = require('mysql');
 const config = require('config')
-var bodyParser = require('body-parser')
 var cors = require('cors')
 
 // Initialize the app
 const app = express();
 const multer = require('multer');
-const upload = multer({dest: 'Image Uploads/'}); 
 
 app.use(cors());
 app.use(express.json())
@@ -29,7 +26,7 @@ const registrationRoute = require('../api/routes/Registration')
 const loginRoute = require('../api/routes/Login')
 const getDataRoute = require('../api/routes/MemberData')
 
-//API Routes
+//Creates the API Routes
 app.use('/registration', registrationRoute)
 app.use('/login', loginRoute)
 app.use('/user', getDataRoute)

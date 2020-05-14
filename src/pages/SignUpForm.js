@@ -80,8 +80,6 @@ onSubmit(e) {
   console.log("Signed Up")
   console.log('The form was submitted with following data:');
   console.log(this.state);
-
-  console.log(this.state.msg)
   
 }
 

@@ -24,10 +24,10 @@ Runs the app and the server concurrently<br>
 
 1) Create a MongoDB Atlas Account Here: https://www.mongodb.com/cloud/atlas
 
-2) Once you have created an account, Build a New Cluster, and create a collection within that cluster
+2) Once you have created an account, click Build a New Cluster, to create a new cluster, and create a collection within that cluster
 
-3) Under Security, go to Database Access and create a User 
+3) Under Security, go to Database Access and create a User
 
-4) Under Security, go to Network Access, and ensure your IP is whitelisted
+4) Under Security, go to Network Access, and ensure your IP is whitelisted 
 
 5) In Clusters, Under Connect, select the Connect your application option and copy the URI to the default.json file under the config folder of this project under Database 

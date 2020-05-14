@@ -5,7 +5,6 @@ import Popup from 'reactjs-popup'
 import DietDietLogo from '../src/DietDietLogo.jpg'
 import Nut from '../src/duncandoughnuts2.png'
 
-
 import { BrowserRouter as Router, Route, Link, NavLink } from  'react-router-dom'
 import SignInForm from './pages/SignInForm';
 import SignUpForm from './pages/SignUpForm';
