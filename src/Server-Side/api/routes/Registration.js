@@ -3,11 +3,8 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
-
-//For now just have user sign up and authentication, implement Member and Helper later 
-const User = require('../../Database/models/UserModel') 
-//const Member = require('../Database/models/Member');
-//const Helper = require('../Database/models/Helper');
+ 
+const User = require('../../Database/models/UserModel');
 
 /**
  * @route   POST /registration
@@ -31,13 +28,6 @@ router.post('/', (req, res) => {
         return res.status(400).json({ msg: 'User already exists' });
        }
        
-       /*
-       if (!isHelper) {
-           const newUser = new Member({name, username, emailAddress, password});
-       } else {
-           const newUser = new Helper({name, username, emailAddress, password});  
-       }*/
-
        const newUser = new User({name, username, emailAddress, password, isHelper});
 
       // Create salt & hash

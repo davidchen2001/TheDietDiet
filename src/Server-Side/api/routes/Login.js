@@ -5,10 +5,7 @@ const config = require('config');
 const jwt = require('jsonwebtoken');
 const auth = require('../../Database/middleware/auth')
 
-const User = require('../../Database/models/UserModel') //For now just have user sign up and authentication 
-//const Member = require('../Database/models/Member');
-//const Helper = require('../Database/models/Helper');
-
+const User = require('../../Database/models/UserModel')
 /**
  * @route   POST /login
  * @desc    Register user
@@ -16,13 +13,10 @@ const User = require('../../Database/models/UserModel') //For now just have user
  */
 
 router.post('/', (req, res) => {
-  //const { username, emailAddress, password} = req.body;
+  
   const { emailAddress, password} = req.body;
+
   // Simple validation
-  /*
-  if( (String(username) === 0 || String(password) === 0) || (String((emailAddress) === 0 || String(password) === 0)) ) {
-    return res.status(400).json({ msg: 'Please enter all fields' });
-   }*/
    if( (String(emailAddress) === 0 || String(password) === 0) ) {
     return res.status(400).json({ msg: 'Please enter all fields' });
    }
@@ -30,15 +24,6 @@ router.post('/', (req, res) => {
    User.findOne({ emailAddress })
    .then(user => {
        if(!user) return res.status(400).json({ msg: 'User does not exist' });
-       
-       /*
-       if (!isHelper) {
-           const newUser = new Member({name, username, emailAddress, password});
-       } else {
-           const newUser = new Helper({name, username, emailAddress, password});  
-       }*/
-
-       //const newUser = new User({name, username, emailAddress, password});
 
       //Validating password
       bcrypt.compare(password, user.password)
