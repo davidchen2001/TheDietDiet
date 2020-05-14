@@ -16,13 +16,6 @@ class SignUpForm extends Component {
       username: '',
       emailAddress: '',
       password: '',
-      /*
-      memberStatus: false,
-      helperStatus: false,
-      homeHelperUsername: '',
-      workHelperUsername: '',
-      helperType: '',
-      memberBeingHelped: '',*/
       errors: {}
   };
 
@@ -38,7 +31,7 @@ static propTypes = {
 }
 
 componentDidUpdate(prevProps) {
-
+  
   const { error } = this.props;
   if (error !== prevProps.error) {
     if(error.id === 'REGISTER_FAIL') {
@@ -78,30 +71,34 @@ onSubmit(e) {
     emailAddress: this.state.emailAddress,
     password: this.state.password,
     isHelper: this.state.isHelper
-    /*
-    memberStatus: this.state.memberStatus,
-    helperStatus: this.state.helperStatus,
-    homeHelper: this.state.homeHelper,
-    workHelper: this.state.workHelper,
-    helperType: this.state.helperType,
-    memberBeingHelped: this.state.memberBeingHelped, */
+    
   }
 
   this.props.register(newUser);
+  
+  this.state.msg = "Successfully Registered!"
   console.log("Signed Up")
   console.log('The form was submitted with following data:');
   console.log(this.state);
+
+  console.log(this.state.msg)
   
 }
 
 render(){
+  const msg = this.state.msg;
+
   return(
     <div className="FormCenter">
-      <form onSubmit={this.onSubmit} className="FormFields" onSubmit={this.onSubmit}>
+      <form className="FormFields" onSubmit={this.onSubmit}>
 
-      {this.state.msg ? (
-      <AlertComponent color = "danger" text = {JSON.stringify(this.state.msg)}></AlertComponent>
-      ) : null}
+      {msg === "Successfully Registered!"? (
+      <AlertComponent color = 'success' text = {JSON.stringify(msg)}></AlertComponent>
+      ) : null }
+
+      {msg && msg !== "Successfully Registered!"? (
+      <AlertComponent color = 'danger' text = {JSON.stringify(msg)}></AlertComponent>
+      ) : null }
 
       <div className="FormField">
       <label className="FormField__Label"htmlFor="name">Name</label>
@@ -139,7 +136,7 @@ render(){
       </div>
 
     <div className="FormField">
-      <button className="FormField__Button mr-30"> Sign up</button><Link to="/sign-in"
+      <button className="FormField__Button mr-30" > Sign up</button><Link to="/sign-in"
       className="FormField__Link">I'm already a member</Link>
       </div>
       </form>
