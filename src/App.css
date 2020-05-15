@@ -145,9 +145,10 @@
   padding-bottom: 2px;
   margin-left: 5px;
 }
-
+/*
 .DropDown {
-  display: flex;
+  margin-left: 92%;
+  display: block;
   justify-content: flex-end;
   margin-bottom: 10%;
 }
@@ -169,7 +170,7 @@
   border-bottom-right-radius: 25px;
 }
 
-/*.App {
+.App {
   text-align: center;
 }
 

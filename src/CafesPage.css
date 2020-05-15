@@ -11,30 +11,67 @@
   top: 0;
   left: 0;
   bottom: 0;
-    width: 15%;
-    background-color: rgb(146, 250, 224);
+    width: 85%;
+    background-color: rgb(80, 80, 80);
     overflow: auto;
+    animation: mainSlideOut 0.5s;
   }
+
+  .CafesPage__Aside__Max {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+      width: 100%;
+      background-color: rgb(80, 80, 80);
+      overflow: auto;
+    }
   
   .CafesPage__Form {
     position:fixed;
     top:0;
     bottom:0;
     right:0;
-    width: 85%;
-    background-color: rgb(70, 70, 70);
+    width: 15%;
+
+    background-color: rgb(40, 190, 154);
     padding: 25px 40px;
     overflow: auto;
+
+
+    animation: barSlideIn 0.5s;
+  }
+
+  .CafesPage__Form:before{
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("RainGif.gif");
+    background-size:cover;
+    opacity: 0.8;
+    z-index:-1;
   }
 
   .btn-group button {
-    background-color: rgb(106, 0, 245);
+    background-color: rgb(106, 100, 245);
     border: 1px solid rgb(94, 255, 215);
     color: white; /* White text */
     padding: 10px 24px; /* Some padding */
     cursor: pointer; /* Pointer/hand icon */
-    width: 100%;
-    display: block; /* Make the buttons appear below each other */
+    width: 115px;
+    display: inline-flex; /* Make the buttons appear below each other */
+    animation: button-fadeIn 0.5s linear;
+  }
+
+  .btn-group button img {
+    width: 50px;
+    height: 50px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .btn-group button:not(:last-child) {
@@ -46,5 +83,33 @@
     background-color: rgb(94, 255, 215);
   }
 
- 
+  .DropDown {
+    margin-left: 15%;
+    display: block;
+  }
+
+  .openMenu{
+    float:right;
+    width:40px;
+    height:80px;
+    border-radius:100px;
+  }
+
+  .closeMenu{
+    float:right;
+    width:60px;
+    height:80px;
+    border-radius:100px;
+    background-color: rgb(220,210,240)
+  }
+
+  @keyframes barSlideIn {
+    from{width:0%}
+    to{width:15%}
+  }
+
+  @keyframes mainSlideOut{
+    from{width:100%}
+    to{width:85%}
+  }
   

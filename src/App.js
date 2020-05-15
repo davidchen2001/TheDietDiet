@@ -5,21 +5,27 @@ import Popup from 'reactjs-popup'
 import Amplify from 'aws-amplify';
 import DietDietLogo from '../src/DietDietLogo.jpg'
 import Nut from '../src/duncandoughnuts2.png'
+import ImageUploader from 'react-images-upload';
 
 
 import { BrowserRouter as Router, Route, Link, NavLink } from  'react-router-dom'
 import SignInForm from './pages/SignInForm';
 import SignUpForm from './pages/SignUpForm';
 import CafesPage from './pages/CafesPage';
+import UploadPage from './pages/UploadPage';
+import ProfilePage from './pages/ProfilePage';
 
 
 
 //const Greetings = (props) => <div> Howdy! {props.first} {props.last}!</div>;
 
 class App extends Component{
+
+
   render(){
   return (
     <Router>
+      {this.props.children}
       <div className="App">
         <div className="App__Aside">
           <img src={Nut} alt=" "/>
@@ -41,10 +47,16 @@ class App extends Component{
           <Route exact path="/" component={SignUpForm}>
             </Route>
 
-          <Route path="/sign-in" component={SignInForm}>
+          <Route exact path="/sign-in" component={SignInForm}>
           </Route>
 
-          <Route path ="/home" component={CafesPage}>
+          <Route exact path ="/home" component={CafesPage}>
+          </Route>
+
+          <Route exact path ="/upload" component={UploadPage}>
+          </Route>
+
+          <Route exact path ="/profile" component={ProfilePage}>
           </Route>
 
           </div>

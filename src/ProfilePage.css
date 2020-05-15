@@ -1,0 +1,75 @@
+
+.ProfilePage {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    color: rgb(239, 238, 238);
+}
+
+.ProfilePage__Aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+    width: 85%;
+    background-color: rgb(90, 90, 90);
+    overflow: auto;
+  }
+  
+  .ProfilePage__Form {
+    position:fixed;
+    top:0;
+    bottom:0;
+    right:0;
+    width: 15%;
+
+    background-color: rgb(100, 100, 234);
+    padding: 25px 40px;
+    overflow: auto;
+  }
+
+  .ProfilePage__Form:before{
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("CodeGif.gif");
+    background-size:cover;
+    opacity: 0.5;
+    z-index:-1;
+  }
+
+  #UserPictureDiv{
+      width:15vw;
+      height:15vw;
+      border-color:black;
+      border-radius:20px;
+      background-color:white;
+      float:left;
+      margin-left:50px;
+      margin-top:50px;
+      color:black;
+  }
+
+  #UserInfoDiv{
+    width:78vw;
+    background-color:rgb(70,70,70);
+    float:left;
+    height:10vw;
+    border-radius:20px;
+    margin-top:20px;
+    margin-right:50px;
+    margin-left:50px;
+    margin-bottom:20px;
+  }
+
+  .photoGallery{
+    margin-left:50px;
+    width:78vw;
+    background-color:red;
+  }
+ 
+  

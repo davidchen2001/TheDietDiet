@@ -12,6 +12,7 @@ class CafesPage extends Component{
 
         this.state = {
             showMenu: false,
+            DisplayAside: true
         }
 
         this.showMenu= this.showMenu.bind(this);
@@ -32,43 +33,75 @@ class CafesPage extends Component{
         });
       }
 
-        
+      showAside = () =>{
+        this.setState({DisplayAside: true});
+      };
 
-      
+      hideAside = () =>{
+        this.setState({DisplayAside: false});
+    };
 
 
     render(){
+        //altering aside size
+        let formName = 'CafesPage__Form';
+        let mainName = 'CafesPage__Aside'
+        if(this.state.DisplayAside == false){
+            mainName='CafesPage__Aside__Max';
+        }
+
+
         return(
+            
 
           <div className="CafesPage">
-            <div className="CafesPage__Aside"> </div>
-            <div className="CafesPage__Form">
-                <div className="DropDown">
-                    <button onClick ={this.showMenu}>
-                        <img src={Nut} alt=" " height = '100px' width = '100px'/>
-                        </button>
+            <div className={mainName}>
+                {this.state.DisplayAside ?(
+                <button class="openMenu" onClick={this.hideAside}><b>-</b></button>
+                ):(
+                <button class="closeMenu" onClick={this.showAside}><b>=</b></button>
+                )}
+                
+            </div>
+            {/*Menu hide and dispaly for the whole aside*/}
+            {
+            this.state.DisplayAside 
+            ?(
 
-                    {
-                        this.state.showMenu
-                    ?(
-                        <div className="btn-group">
-                            <Link exact to="/upload" className="FormField__Link"  >
-                            <button > 
-                                <img src={Nut} alt=" " />
-                            </button> 
 
-                            </Link>
+                <div className={formName}>
+                    <div className="DropDown">
+                        <button onClick ={this.showMenu}>
+                            <img src={Nut} alt=" " height = '100px' width = '100px'/>
+                            </button>
 
-                            <button> <img src={Nut} alt=" "/></button>
-                            <button> <img src={Nut} alt=" "/></button>
-                        </div>
-                    ):(
-                    null
-                    )
-                    }
-                </div>
-                <h2>This is Cafes page</h2>
-                </div>
+                        {
+                            this.state.showMenu
+                        ?(
+                            <div className="btn-group">
+                                <Link exact to="/upload" className="FormField__Link"  >
+                                <button > 
+                                    <img src={Nut} alt=" " />
+                                    Upload
+                                </button> 
+                                </Link>
+
+                                <Link exact to="/profile" className="FormField__Link"  >
+                                <button > 
+                                    <img src={Nut} alt=" " />
+                                    Profile
+                                </button> 
+                                </Link>
+
+                                <button> <img src={Nut} alt=" "/></button>
+                            </div>
+                        ):(null)}
+                    </div>
+                    <h2>This is Cafes page</h2>
+                    </div>
+                ):(null)}
+
+
             </div>
 
            
