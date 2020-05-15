@@ -26,7 +26,11 @@
       background-color: rgb(80, 80, 80);
       overflow: auto;
     }
-  
+    width: 15%;
+    background-color: rgb(146, 250, 224);
+    overflow: auto;
+  }
+
   .CafesPage__Form {
     position:fixed;
     top:0;

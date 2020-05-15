@@ -4,8 +4,8 @@ import '../CafesPage.css';
 import '../App.css';
 import Nut from '../duncandoughnuts2.png';
 
-
 //between constructor and render is all just stuff for making the menu work
+
 class CafesPage extends Component{
     constructor(){
         super();
@@ -32,7 +32,6 @@ class CafesPage extends Component{
           document.removeEventListener('click', this.closeMenu);
         });
       }
-
       showAside = () =>{
         this.setState({DisplayAside: true});
       };
@@ -108,7 +107,6 @@ class CafesPage extends Component{
          
     );
     }
-    
 }
 
 export default CafesPage;

@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-//import logo from './logo.svg';
+import ImageUploader from 'react-images-upload';
+
 import './App.css';
 import Popup from 'reactjs-popup'
-import Amplify from 'aws-amplify';
 import DietDietLogo from '../src/DietDietLogo.jpg'
 import Nut from '../src/duncandoughnuts2.png'
-import ImageUploader from 'react-images-upload';
 
 
 import { BrowserRouter as Router, Route, Link, NavLink } from  'react-router-dom'
@@ -15,17 +14,19 @@ import CafesPage from './pages/CafesPage';
 import UploadPage from './pages/UploadPage';
 import ProfilePage from './pages/ProfilePage';
 
+import { Provider } from 'react-redux';
+import store from './store';
 
-
-//const Greetings = (props) => <div> Howdy! {props.first} {props.last}!</div>;
-
+import { loadUser } from './Actions/AuthAction';
+    
 class App extends Component{
-
-
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
   render(){
   return (
     <Router>
-      {this.props.children}
+      <Provider store={store}>
       <div className="App">
         <div className="App__Aside">
           <img src={Nut} alt=" "/>
@@ -61,6 +62,8 @@ class App extends Component{
 
           </div>
         </div>
+
+        </Provider>
     </Router>
   );
   }
@@ -68,43 +71,3 @@ class App extends Component{
 
 
 export default App;
-
-
-
-  /*
-  const PopupExample =  () => (
-    <Popup trigger={<button> Trigger</button>} position="right center">
-      <div><Greetings first="John" last="Smith" /></div>
-    </Popup>
-  )
-        <header className="App-header">
-          
-           
-          <Greetings first="John" last="Smith" />
-          
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            
-          >
-            Learn React
-          </a>
-        </header>
-
-
-          <div className="FormCenter">
-          <form className="FormFields" onSubmit={this.handleSubmit}>
-            <div className="FormField">
-              <label className="FormField__Label"htmlfor="name">Full Name</label>
-              <input type="text" id="name" className="FormField__Input" placeholder="Enter full name here" name="name"/>
-              </div>
-            </form>
-          </div>
-
-        */
