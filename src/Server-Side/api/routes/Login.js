@@ -6,9 +6,10 @@ const jwt = require('jsonwebtoken');
 const auth = require('../../Database/middleware/auth')
 
 const User = require('../../Database/models/UserModel')
+
 /**
  * @route   POST /login
- * @desc    Register user
+ * @desc    Login user
  * @access  Public
  */
 
@@ -51,6 +52,12 @@ router.post('/', (req, res) => {
       
     })
 });
+
+/**
+ * @route   POST /user
+ * @desc    Get user data 
+ * @access  Private 
+ */
 
 router.get('/user', auth, (req, res) => {
     User.findById(req.user.id)

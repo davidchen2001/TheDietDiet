@@ -26,13 +26,11 @@ mongoose
 const PORT = process.env.PORT || 5000;
 
 const registrationRoute = require('../api/routes/Registration')
-const loginRoute = require('../api/routes/Login')
-const getDataRoute = require('../api/routes/MemberData')
+const authRoute = require('../api/routes/Login')
 
 //API Routes
 app.use('/registration', registrationRoute)
-app.use('/login', loginRoute)
-app.use('/user', getDataRoute)
+app.use('/login', authRoute)
 
 // Start the server
 app.listen(PORT, () => {
