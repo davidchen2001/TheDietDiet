@@ -8,7 +8,6 @@ var cors = require('cors')
 // Initialize the app
 const app = express();
 const multer = require('multer');
-const upload = multer({dest: 'Image Uploads/'}); 
 
 app.use(cors());
 app.use(express.json())
