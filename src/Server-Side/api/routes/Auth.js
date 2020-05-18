@@ -8,7 +8,7 @@ const auth = require('../../Database/middleware/auth')
 const User = require('../../Database/models/UserModel')
 
 /**
- * @route   POST /login
+ * @route   POST /auth
  * @desc    Login user
  * @access  Public
  */
@@ -54,7 +54,7 @@ router.post('/', (req, res) => {
 });
 
 /**
- * @route   POST /user
+ * @route   POST /auth/user
  * @desc    Get user data 
  * @access  Private 
  */

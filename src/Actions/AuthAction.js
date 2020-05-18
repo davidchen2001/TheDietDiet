@@ -9,8 +9,7 @@ import {
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  USER_DATA_RETRIEVED
+  REGISTER_FAIL
 
 } from './types';
 
@@ -20,7 +19,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get('http://localhost:5000/login/user', tokenConfig(getState))
+    .get('http://localhost:5000/auth/user', tokenConfig(getState))
     .then(res =>
       dispatch({
         type: USER_LOADED,
@@ -78,7 +77,7 @@ export const login = ({ emailAddress, password }) => dispatch => {
   const body = JSON.stringify({ emailAddress, password });
 
   axios
-    .post('http://localhost:5000/login', body, config)
+    .post('http://localhost:5000/auth', body, config)
     .then(res =>
       dispatch({
         type: LOGIN_SUCCESS,
