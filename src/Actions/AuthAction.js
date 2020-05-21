@@ -19,7 +19,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get('http://localhost:5000/auth/user', tokenConfig(getState))
+    .get('http://localhost:5000/user', tokenConfig(getState))
     .then(res =>
       dispatch({
         type: USER_LOADED,
