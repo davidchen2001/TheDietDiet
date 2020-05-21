@@ -1,8 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose'); 
-const mysql = require('mysql');
 const config = require('config')
-var bodyParser = require('body-parser')
 var cors = require('cors')
 
 // Initialize the app
@@ -26,10 +24,12 @@ const PORT = process.env.PORT || 5000;
 
 const registrationRoute = require('../api/routes/Registration')
 const authRoute = require('../api/routes/Auth')
+const memberProfileRoute = require('../api/routes/MemberProfile');
 
 //API Routes
 app.use('/registration', registrationRoute)
 app.use('/auth', authRoute)
+app.use('/user', memberProfileRoute)
 
 // Start the server
 app.listen(PORT, () => {
