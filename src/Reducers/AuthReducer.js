@@ -6,8 +6,7 @@ import {
     LOGIN_FAIL,
     LOGOUT_SUCCESS,
     REGISTER_SUCCESS, 
-    REGISTER_FAIL,
-    USER_DATA_RETRIEVED
+    REGISTER_FAIL
 } from "../Actions/types";
 
 const initialState = {
@@ -54,6 +53,5 @@ export default function(state = initialState, action) {
         };
       default:
         return state;
-      case USER_DATA_RETRIEVED: 
     }
   }

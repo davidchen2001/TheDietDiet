@@ -9,8 +9,7 @@ import {
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  USER_DATA_RETRIEVED
+  REGISTER_FAIL
 
 } from './types';
 
@@ -20,7 +19,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get('http://localhost:5000/login/user', tokenConfig(getState))
+    .get('http://localhost:5000/user', tokenConfig(getState))
     .then(res =>
       dispatch({
         type: USER_LOADED,
@@ -46,7 +45,7 @@ export const register = ({ name, username, emailAddress, password, isHelper }) =
 
   // Request body
   const body = JSON.stringify({ name, username, emailAddress, password, isHelper });
-  //http://localhost:5000
+  
   axios
     .post('http://localhost:5000/registration', body, config)
     .then(res =>
@@ -78,7 +77,7 @@ export const login = ({ emailAddress, password }) => dispatch => {
   const body = JSON.stringify({ emailAddress, password });
 
   axios
-    .post('http://localhost:5000/login', body, config)
+    .post('http://localhost:5000/auth', body, config)
     .then(res =>
       dispatch({
         type: LOGIN_SUCCESS,
@@ -121,27 +120,3 @@ export const tokenConfig = getState => {
 
   return config;
 };
-
-export const retrieveUserData = ({ emailAddress }) => dispatch => {
-
-  // Request body - User has already been logged in by this point so data only needs to be retrieved, not authenticated 
-  const body = JSON.stringify({ emailAddress });
-
-  axios
-    .get('http://localhost:5000/user', body)
-    .then(res =>
-      dispatch({
-        type: USER_DATA_RETRIEVED,
-        payload: res.data
-      })
-    )
-    .catch(err => {
-      dispatch(
-        returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL')
-      );
-      dispatch({
-        type: LOGIN_FAIL
-      });
-    });
-
-}; 
