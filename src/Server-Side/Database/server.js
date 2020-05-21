@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose'); 
 const config = require('config')
+
 var cors = require('cors')
 
 // Initialize the app
