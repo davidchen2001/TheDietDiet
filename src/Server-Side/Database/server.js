@@ -1,15 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose'); 
 const config = require('config')
+const multer = require('multer');
 
-var cors = require('cors')
+const cors = require('cors')
 
 // Initialize the app
 const app = express();
-const multer = require('multer');
 
 app.use(cors());
 app.use(express.json())
+
+//Images received are stored a static uploads folder on the server side
+app.use('/uploads', express.static('uploads'));
 
 const db = config.get('mongoURI'); 
 
@@ -27,11 +30,13 @@ const PORT = process.env.PORT || 5000;
 const registrationRoute = require('../api/routes/Registration')
 const authRoute = require('../api/routes/Auth')
 const memberProfileRoute = require('../api/routes/MemberProfile');
+const imageRoute = require('../api/routes/Image');
 
 //API Routes
 app.use('/registration', registrationRoute)
 app.use('/auth', authRoute)
 app.use('/user', memberProfileRoute)
+app.use('/image', imageRoute)
 
 // Start the server
 app.listen(PORT, () => {
