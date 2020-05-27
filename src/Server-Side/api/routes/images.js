@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
     }
 });
 
-//Defines the file types which are to be accepted by the server
+//Defines the file types which are acceptable to the server
 const fileFilter = (req, file, cb) => {
     if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
         cb(null, true);
@@ -23,7 +23,7 @@ const fileFilter = (req, file, cb) => {
     }
 }
 
-//Creates an instance of the multer middleware with storage details, maximum acceptable file size, and filter options being set 
+//Creates an instance of the multer middleware  
 const upload = multer({
     storage: storage,
     limits: {
