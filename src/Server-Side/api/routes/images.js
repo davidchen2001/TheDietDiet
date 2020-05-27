@@ -34,7 +34,7 @@ const upload = multer({
 
 
 //Parameter for upload.single() is filename passed
-router.post('/upload', upload.single('file'), (req, res) => {
+router.post('/upload', upload.single('imageData'), (req, res, next) => {
     console.log(req.body)
 
     const newImage = new Image ({
