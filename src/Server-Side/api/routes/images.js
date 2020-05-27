@@ -1,9 +1,37 @@
 const express = require("express");
 const router = express.Router(); 
-const upload = require("../../Database/middleware/upload");
+
 const Image = require("../../Database/models/Image");
 const multer = require("multer")
-const upload = multer({dest: 'uploads/'})
+
+//Provides the path to the destination folder and defines a filename for the file (an image) uploaded
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './uploads/');
+    },
+    filename: function(req, file, cb) {
+        cb(null, Data.now() + file.originalname);
+    }
+});
+
+//Defines the file types which are to be accepted by the server
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+}
+
+//Creates an instance of the multer middleware with storage details, maximum acceptable file size, and filter options being set 
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 2024 * 5
+    },
+    fileFilter: fileFilter
+});
+
 
 //Parameter for upload.single() is filename passed
 router.post('/upload', upload.single('file'), (req, res) => {
