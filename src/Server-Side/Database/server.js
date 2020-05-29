@@ -27,15 +27,11 @@ mongoose
 
 const PORT = process.env.PORT || 5000;
 
-const registrationRoute = require('../api/routes/Registration')
-const authRoute = require('../api/routes/Auth')
-const memberProfileRoute = require('../api/routes/MemberProfile');
+const authRoute = require('../api/routes/users');
 const imageRoute = require('../api/routes/images');
 
 //API Routes
-app.use('/registration', registrationRoute)
 app.use('/auth', authRoute)
-app.use('/user', memberProfileRoute)
 app.use('/images', imageRoute)
 
 // Start the server
