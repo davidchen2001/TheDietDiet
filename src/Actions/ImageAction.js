@@ -2,9 +2,9 @@ import axios from 'axios'
 import {IMAGE_UPLOADED, IMAGE_UPLOAD_ERROR } from './types';
 import {returnError} from './ErrorAction'; 
 
-export const uploadImage = ({ imageName, imageData, imageType}) => dispatch => {
+export const uploadImage = ({ imageName}) => dispatch => {
 
-    const body = JSON.stringify({ imageName, imageData, imageType} )
+    const body = JSON.stringify({ imageName} )
 
     axios
     .post('http://localhost:5000/images/upload', body)
