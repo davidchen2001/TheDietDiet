@@ -5,7 +5,7 @@ import {returnError} from './ErrorAction';
 export const uploadImage = () => dispatch => {
 
     axios
-    .post('/images/upload')
+    .post('/api/images/upload')
     .then(res =>
         dispatch({
             type: IMAGE_UPLOADED,
@@ -26,7 +26,7 @@ export const deleteImage = ({ imageData }) => dispatch => {
     const body= JSON.stringify( { imageData } );
 
     axios
-    .delete('/images/delete', body)
+    .delete('/api/images/delete', body)
     .then(res => 
         dispatch({
             type: IMAGE_DELETED
