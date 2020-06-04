@@ -1,7 +1,8 @@
-import { IMAGE_UPLOADED, IMAGE_UPLOAD_ERROR } from '../Actions/types';
+import { IMAGE_UPLOADED, IMAGE_UPLOAD_ERROR, IMAGE_DELETED, IMAGE_DELETE_ERROR } from '../Actions/types';
 
 const initialState = {
-    isUploaded: false 
+    isUploaded: false, 
+    isDeleted: false 
 }
 
 export default function(state = initialState, action) {
@@ -17,7 +18,17 @@ export default function(state = initialState, action) {
                 ...state,
                 isUploaded: false 
             };
-
+        
+        case IMAGE_DELETED:
+            return {
+                ...state,
+                isDeleted: true
+            };
+        case IMAGE_DELETE_ERROR:
+            return {
+                ...state,
+                isDeleted: false
+            };
         default: 
             return state; 
     }
