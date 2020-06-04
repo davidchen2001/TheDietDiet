@@ -3,15 +3,16 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
+
 const auth = require('../../Database/middleware/auth')
+
 const User = require('../../Database/models/UserModel');
 
 /**
- * @route   POST /auth/register
+ * @route   POST /api/auth/register
  * @desc    Register user
  * @access  Public
  */
-
 
 router.post('/register', (req, res) => {
   const { name, username, emailAddress, password, isHelper } = req.body;
@@ -63,7 +64,7 @@ router.post('/register', (req, res) => {
 });
 
 /**
- * @route   POST /auth/login
+ * @route   POST /api/auth/login
  * @desc    Login user
  * @access  Public
  */
@@ -109,7 +110,7 @@ router.post('/login', (req, res) => {
   });
 
 /**
- * @route   POST /auth/user
+ * @route   GET /api/auth/user
  * @desc    Get user data 
  * @access  Private 
  */

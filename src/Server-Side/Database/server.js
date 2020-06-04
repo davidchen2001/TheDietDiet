@@ -31,8 +31,8 @@ const authRoute = require('../api/routes/users');
 const imageRoute = require('../api/routes/images');
 
 //API Routes
-app.use('/auth', authRoute)
-app.use('/images', imageRoute)
+app.use('/api/auth', authRoute)
+app.use('/api/images', imageRoute)
 
 // Start the server
 app.listen(PORT, () => {
