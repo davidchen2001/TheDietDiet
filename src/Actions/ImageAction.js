@@ -2,12 +2,10 @@ import axios from 'axios'
 import {IMAGE_UPLOADED, IMAGE_UPLOAD_ERROR } from './types';
 import {returnError} from './ErrorAction'; 
 
-export const uploadImage = ({ imageName }) => dispatch => {
-
-    const body = JSON.stringify({ imageName} )
+export const uploadImage = () => dispatch => {
 
     axios
-    .post('/images/upload', body)
+    .post('/images/upload')
     .then(res =>
         dispatch({
             type: IMAGE_UPLOADED,
@@ -20,7 +18,24 @@ export const uploadImage = ({ imageName }) => dispatch => {
             type: IMAGE_UPLOAD_ERROR,
 
         })
-
     })
 }
 
+export const deleteImage = ({ imageData }) => dispatch => {
+
+    const body= JSON.stringify( { imageData } );
+
+    axios
+    .delete('/images/delete', body)
+    .then(res => 
+        dispatch({
+            type: IMAGE_DELETED
+        }))
+    .catch(err => {
+        dispatch(returnError(err.response.data, err.response.status, 'IMAGE_DELETE_ERROR'));
+        dispatch({
+            type: IMAGE_DELETE_ERROR
+        })
+    })
+
+}

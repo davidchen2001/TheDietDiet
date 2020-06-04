@@ -65,10 +65,9 @@ router.post('/upload', upload.single('imageData'), (req, res, next) => {
  * @access  Private 
  */
 
-router.delete('/delete', (req, res) =>  {
-    const { imageData }  = req.body
-    console.log(imageData)
-    Image.findOne({ imageData })
+router.delete('/delete/:id', (req, res) =>  {
+    
+    Image.findById(req.params.id)
         .then(image => image.remove().then(() => res.json({ success: true })))
         .catch(err => res.status(404).json({ success: false }));
 
