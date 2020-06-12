@@ -24,20 +24,12 @@ body {
     margin-right: auto;
     margin-top: 100px;
     margin-bottom: auto;
-    height: 430px;
-    width: 430px;
+    height: 30vw;
+    width: 30vw;
     object-fit: cover;
     justify-content: center;
     animation: DietDietLogo-spin infinite 3s linear;
     animation-direction:alternate; 
-}
-
-.button-group button img{
-  display: flex;
-  width: 50px;
-  height: 50px;
-  animation: button-fadeIn 10s linear;
-  
 }
 
 @keyframes DietDietLogo-spin {

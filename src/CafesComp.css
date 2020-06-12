@@ -1,0 +1,138 @@
+.CafesComp p{
+    font-size:2.5vh;
+}
+
+.CafesComp{
+    background-color:none;
+    height:20vw;
+}
+
+#cafesInfo{
+    margin-top:2vh;
+    color:white;
+    text-align:left;
+    width:40vw;
+    margin-left:1vw;
+}
+
+#cafesInfo2{
+  width:20vw;
+  text-align:left;
+  color:white;
+}
+
+#cafesTable{
+    height:20vw;
+    width:100%;
+    position:static;
+    border:none;
+    margin:auto;
+    float:left;
+    border: none;
+    overflow:auto;
+}
+
+#cafesTable td{
+  border: none;
+}
+
+#cafesTable:first-child{
+    width:20vw;
+    height:20vw;
+    text-align:center;
+}
+
+#cafesTable h2{
+  margin-top:-1.5vh;
+}
+
+
+
+
+
+/*https://stackoverflow.com/questions/14184494/segments-in-a-circle-using-css3/14185845*/
+.sliceMaster {
+    position: relative;
+    border: 1vw solid black;
+
+    padding:0;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+    list-style: none;
+    overflow: hidden;
+    margin: 0 auto;
+    float:left;
+    margin-left:1vw;
+  }
+  
+  .slice {
+    position: absolute;
+    left: -100%;
+    width: 200%;
+    height: 200%;
+ 
+
+  }
+  
+  li {
+    overflow: hidden;
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    transform-origin: 0% 100%;
+
+  }
+  
+  li:first-child {
+    transform: rotate(0deg) skewY(141.42deg);
+    animation:loadIn 0.2s ease-out;
+  }
+  
+  li:nth-child(2) {
+    transform: rotate(51.42deg) skewY(141.42deg);
+    animation:loadIn 0.3s ease-out;
+  }
+
+  
+li:nth-child(3) {
+    transform: rotate(102.85deg) skewY(141.42deg);
+    animation:loadIn 0.4s ease-out;
+  }
+  
+  li:nth-child(4) {
+    transform: rotate(154.28deg) skewY(141.42deg);
+    animation:loadIn 0.5s ease-out;
+  }
+  
+  li:nth-child(5) {
+    transform: rotate(205.71deg) skewY(141.42deg);
+    animation:loadIn 0.6s ease-out;
+  }
+
+  li:nth-child(6) {
+    transform: rotate(257.14deg) skewY(141.42deg);
+    animation:loadIn 0.7s ease-out;
+  }
+  
+  li:nth-child(7) {
+    transform: rotate(308.57deg) skewY(141.42deg);
+    animation:loadIn 0.8s ease-out;
+  }
+ 
+
+@keyframes loadIn {
+    0% {
+        transform: rotateZ(0);
+        opacity:0;
+        transform:skewY(141.42deg);
+    }
+	100% {
+        /*transform: rotateZ(360deg);*/
+        transform:rotateZ(180deg) skewY(141.42deg);;
+        opacity:100;
+	}
+  }
+  
