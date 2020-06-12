@@ -1,65 +1,115 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import { login } from '../Actions/AuthAction'; 
+import { clearErrors } from '../Actions/ErrorAction';
+
+import AlertComponent from './Components/AlertComponent'
 
 class SignInForm extends Component {
   constructor(){
     super();
     this.state={
-      email:'',
+      emailAddress:'',
       password:''
   };
-
-  this.handleChange = this.handleChange.bind(this);
-  this.handleSubmit = this.handleSubmit.bind(this);
+  
+  
+  this.onChange = this.onChange.bind(this)
+  this.onSubmit = this.onSubmit.bind(this)
 }
 
-handleChange(e){
-  let target = e.target;
-  let value = target.type === 'checkbox' ? target.checked : target.value;
-  let name = target.name;
-
-  this.setState({[name]:value});
+static propTypes = {
+  isAuthenticated: PropTypes.bool,
+  error: PropTypes.object.isRequired,
+  login: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired
 }
 
-handleSubmit(e){
-  e.preventDefault();
+componentDidUpdate(prevProps) {
+  
+  const { error } = this.props;
+  if (error !== prevProps.error) {
+    if(error.id === 'LOGIN_FAIL') {
+      this.setState({ msg: error.msg }); 
 
-  console.log('The form was submitted with following data:');
-  console.log(this.state);
+    } else {
+      this.setState({ msg: null });
+    }
+  }
+
 }
 
+toggle = () => {
+  this.props.clearErrors();
+}; 
+
+
+onChange(e) {
+  this.setState({ [e.target.name]: e.target.value })
+  console.log("Something changed on login");
+}
+onSubmit(e) {
+  e.preventDefault()
+
+  const newUser = {
+    emailAddress: this.state.email,
+    password: this.state.password,
+    
+  }
+
+  this.props.login(newUser);
+  this.state.msg = "Logged In!"
+  console.log("Signed In")
+}
 
     render(){
+      const msg = this.state.msg 
+
         return(
             <div className="FormCenter">
-            <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
+            <form className="FormFields" onSubmit={this.onSubmit}>
+
+            {msg === "Logged In!" ? (
+            <AlertComponent color = 'success' text = {JSON.stringify(msg)}></AlertComponent>
+            ) : null }
+
+            {msg && msg !== "Logged In!"? (
+            <AlertComponent color = 'danger' text = {JSON.stringify(msg)}></AlertComponent>
+            ) : null }
+
             <div className="FormField">
-              <label className="FormField__Label"htmlfor="email">Email/Username</label>
-              <input type="text" id="email" className="FormField__Input" placeholder="Enter email/username here" name="email"
-              value={this.state.email} onChange={this.handleChange}/>
+              <label className="FormField__Label"htmlFor="email">Email</label>
+              <input type="email" id="email" className="FormField__Input" placeholder="Enter email here" name="email"
+              value={this.state.email} onChange={this.onChange}/>
               </div>
 
- 
               <div className="FormField">
-              <label className="FormField__Label"htmlfor="password">Password</label>
-              <input type="text" id="password" className="FormField__Input" placeholder="Enter password here" name="password"
-              value={this.state.password} onChange={this.handleChange}/>
+              <label className="FormField__Label"htmlFor="password">Password</label>
+              <input type="password" id="password" className="FormField__Input" placeholder="Enter password here" name="password"
+              value={this.state.password} onChange={this.onChange}/>
               </div>
 
             <div className="FormField">
-              <Link to="/home"> 
-              <button className="FormField__Button mr-30" >Log In</button>
-              </Link>
-              <Link exact to="/home" className="FormField__Link">Register an account</Link>
+              <button className="FormField__Button mr-30">Log In</button><Link exact to="/"
+              className="FormField__Link">Register an account</Link>
               </div>
               </form>
              </div>
-
-            
          );
 
      }
-
 }
 
-export default SignInForm;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  error: state.error
+});
+
+export default connect(
+  mapStateToProps,
+  { login, clearErrors }
+)(SignInForm);

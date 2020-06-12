@@ -3,23 +3,46 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "aws-amplify": "^1.1.29",
-    "aws-amplify-react": "^2.3.9",
-    "react": "^16.8.6",
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.5.0",
+    "config": "^3.2.3",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "eslint-utils": "^1.4.3",
+    "express": "^4.17.1",
+    "jquery": "^3.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "lodash.template": "^4.5.0",
+    "lodash.update": "^4.10.2",
+    "mongoose": "^5.9.18",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.4",
+    "react": "^16.13.1",
     "react-charts": "^2.0.0-beta.6",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.13.1",
     "react-grid-gallery": "^0.5.5",
     "react-images-upload": "^1.2.8",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.1",
     "react-tooltip": "^4.2.6",
-    "reactjs-popup": "^1.4.1"
+    "reactjs-popup": "^1.5.0",
+    "reactstrap": "^8.4.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
+    "serialize-javascript": "^2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "client": "npm start",
+    "server": "cd src && cd Server-Side && cd Database && node server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,16 +59,5 @@
       "last 1 safari version"
     ]
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Zronen/TheDietDiet.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Zronen/TheDietDiet/issues"
-  },
-  "homepage": "https://github.com/Zronen/TheDietDiet#readme"
+  "proxy": "http://localhost:5000/"
 }

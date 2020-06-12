@@ -17,7 +17,6 @@ class CafesPage extends Component{
     constructor(){
         super();
 
-
         this.state = {
             showMenu: false,
             DisplayAside: true

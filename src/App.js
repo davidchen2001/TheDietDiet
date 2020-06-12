@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-//import logo from './logo.svg';
 import './App.css';
 import Popup from 'reactjs-popup'
-import Amplify from 'aws-amplify';
 import DietDietLogo from '../src/DietDietLogo.jpg'
 import Nut from '../src/duncandoughnuts2.png'
-//import ImageUploader from 'react-images-upload';
 
 
 import { BrowserRouter as Router, Route, Link, NavLink } from  'react-router-dom'
@@ -14,18 +11,20 @@ import SignUpForm from './pages/SignUpForm';
 import CafesPage from './pages/CafesPage';
 import UploadPage from './pages/UploadPage';
 import ProfilePage from './pages/ProfilePage';
+    
+import { Provider } from 'react-redux';
+import store from './store';
 
-
-
-//const Greetings = (props) => <div> Howdy! {props.first} {props.last}!</div>;
-
+import { loadUser } from './Actions/AuthAction';
 class App extends Component{
-
-
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
   render(){
   return (
     <Router>
-      {this.props.children}
+    {this.props.children}
+      <Provider store={store}>
       <div className="App">
         <div className="App__Aside">
           <img src={Nut} alt=" "/>
@@ -61,11 +60,11 @@ class App extends Component{
 
           </div>
         </div>
+        </Provider>
     </Router>
   );
   }
 }
-
 
 export default App;
 
