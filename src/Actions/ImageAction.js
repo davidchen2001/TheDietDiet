@@ -2,7 +2,7 @@ import axios from 'axios'
 import {IMAGE_UPLOADED, IMAGE_UPLOAD_ERROR, IMAGE_DELETED, IMAGE_DELETE_ERROR } from './types';
 import {returnErrors} from './ErrorAction'; 
 
-export const uploadImage = (imageObj) => dispatch => {
+export const uploadImage = ( imageObj ) => dispatch => {
 
     axios
     .post('/api/images/upload', imageObj)

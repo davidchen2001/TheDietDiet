@@ -6,7 +6,12 @@ import '../App.css';
 import Nut from '../duncandoughnuts2.png';
 import ImageUploader from 'react-images-upload';
 
-class UploadPage extends React.Component{
+import { connect } from 'react-redux';
+import {uploadImage} from '../Actions/ImageAction.js'; 
+import {clearErrors} from '../Actions/ErrorAction'; 
+import PropTypes from 'prop-types';
+
+class UploadPage extends Component{
 
 //between constructor and render is all just stuff for making the menu work
     constructor(props){
@@ -30,6 +35,28 @@ class UploadPage extends React.Component{
         
     }
 
+    static propTypes = {
+        isUploaded: PropTypes.bool,
+        error: PropTypes.object.isRequired,
+        uploadImage: PropTypes.object.isRequired,
+        clearErrors: PropTypes.func.isRequired
+    }
+
+    componentDidUpdate(prevProps) {
+  
+        const { error } = this.props;
+        if (error !== prevProps.error) {
+          if(error.id === 'IMAGE_UPLOAD_ERROR') {
+            this.setState({ msg: error.msg }); 
+            
+          } else {
+            this.setState({ msg: null });
+            //this.props.clearErrors();
+          }
+        }
+      
+      }
+
     //image upload section//
     //https://www.npmjs.com/package/react-images-upload
     onDrop(picture) {
@@ -51,6 +78,16 @@ class UploadPage extends React.Component{
     
     uploadHandler = (e) =>{
         e.preventDefault();
+
+        const latestImageIndex = this.state.pictures.length
+        const newImage = this.state.pictures[latestImageIndex-1]
+
+        const imageFormData = new FormData();
+        imageFormData.append("imageData", newImage)
+
+        this.props.uploadImage(imageFormData)
+        console.log(newImage)
+        //console.log(imageFormData)
         
         console.log('The form was submitted with following data:');
         console.log(this.state);
@@ -155,4 +192,12 @@ render(){
 }
 }
 
-export default UploadPage;
+
+const mapStateToProps = state => ({
+    isUploaded: state.isUploaded,
+    error: state.error
+})
+
+export default connect(
+    mapStateToProps, { uploadImage }
+) (UploadPage);

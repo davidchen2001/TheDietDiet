@@ -7,7 +7,7 @@ import ReactTooltip from "react-tooltip";
 /*https://www.npmjs.com/package/react-tooltip
 tooltip component */
 
-class ProgCircle extends React.Component {
+class ProgCircle extends Component {
     
     constructor(props){
 
