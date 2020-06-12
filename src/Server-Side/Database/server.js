@@ -13,7 +13,7 @@ app.use(express.json())
 
 //Images received are stored a static uploads folder on the server side
 app.use('/uploads', express.static('uploads'));
-app.use(express.urlencoded({limit: '8mb', extended: true}))
+app.use(express.urlencoded({limit: '5mb', extended: true}))
 
 const db = config.get('mongoURI'); 
 
