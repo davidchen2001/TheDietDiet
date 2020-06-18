@@ -74,7 +74,7 @@ onSubmit(e) {
             <form className="FormFields" onSubmit={this.onSubmit}>
 
             {msg === "Logged In!" ? (
-            <AlertComponent color = 'success' text = {JSON.stringify(msg)}></AlertComponent>
+            <AlertComponent color = "success" text = {JSON.stringify(msg)}></AlertComponent>
             ) : null }
 
             {msg && msg !== "Logged In!"? (
