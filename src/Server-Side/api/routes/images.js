@@ -33,6 +33,12 @@ const upload = multer({
 });
 
 
+/**
+ * @route   POST /api/images/upload
+ * @desc    POST an image 
+ * @access  Private (Public for now, will add token access)
+ */
+
 //Parameter for upload.single() is filename passed
 router.post('/upload', upload.single('imageData'), (req, res, next) => {
     console.log(req.body)
@@ -52,5 +58,19 @@ router.post('/upload', upload.single('imageData'), (req, res, next) => {
         })
         .catch((err) => next(err));
 });
+
+/**
+ * @route   POST /api/images/delete
+ * @desc    Delete an image from the database 
+ * @access  Private 
+ */
+
+router.delete('/delete/:id', (req, res) =>  {
+    
+    Image.findById(req.params.id)
+        .then(image => image.remove().then(() => res.json({ success: true })))
+        .catch(err => res.status(404).json({ success: false }));
+
+}); 
 
 module.exports = router; 
