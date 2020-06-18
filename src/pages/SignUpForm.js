@@ -76,13 +76,10 @@ onSubmit(e) {
 
   this.props.register(newUser);
   
-  this.state.msg = "Successfully Registered!"
+  this.setState({msg: "Successfully Registered"})
   console.log("Signed Up")
   console.log('The form was submitted with following data:');
   console.log(this.state);
-
-  console.log(this.state.msg)
-  
 }
 
 render(){

@@ -62,7 +62,7 @@ onSubmit(e) {
   }
 
   this.props.login(newUser);
-  this.state.msg = "Logged In!"
+  this.setState({msg: "Logged In"})
   console.log("Signed In")
 }
 
