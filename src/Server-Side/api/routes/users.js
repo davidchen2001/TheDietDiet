@@ -10,6 +10,7 @@ const User = require('../../Database/models/User');
 const Member = require('../../Database/models/Member');
 const Helper = require('../../Database/models/Helper');
 const Coordinator = require('../../Database/models/Coordinator');
+const { verify } = require('crypto');
 
 /**
  * @route   POST /api/auth/register
@@ -81,14 +82,14 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
   
-    const {emailAddress, password} = req.body;
+    const {emailAddress, username, password} = req.body;
   
     // Simple validation
      if( (String(emailAddress) === 0 || String(password) === 0) ) {
       return res.status(400).json({ msg: 'Please enter all fields' });
      }
-  
-     User.findOne({ emailAddress })
+
+     User.findOne({ emailAddress})
      .then(user => {
          if(!user) {
            return res.status(400).json({ msg: 'User does not exist' });
