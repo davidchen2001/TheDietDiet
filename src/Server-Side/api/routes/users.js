@@ -31,8 +31,15 @@ router.post('/register', (req, res) => {
        {
         return res.status(400).json({ msg: 'User already exists' });
        }
-       
-       const newUser = new User({name, username, emailAddress, password, isHelper});
+      
+       let newUser = new User();
+       if (isHelper)
+       {
+         newUser = new Helper({name, username, emailAddress, password, isHelper})
+       } else 
+       {
+         newUser = new Member({name, username, emailAddress, password, isHelper})
+       }
 
       // Create salt & hash
       bcrypt.genSalt(10, (err, salt) => {
