@@ -1,38 +1,15 @@
 const mongoose = require ('mongoose');
+const User = require('./User');
 const Schema = mongoose.Schema;
 
-const memberSchema = new Schema({
-    name: {
-        type: String,
-        required: true,
-    },
-    username: {
-        type: String,
-        required: true,
-    },
-    password: {
-        type: String,
-        required: true,
-    }, 
-    emailAddress: {
-        type: String,
-        required: true,
-    }, 
-    memberStatus: {
-        type: Boolean,
-        required: true,
-        default: false,
-    },
+const Member = User.discriminator('Member', new Schema({
     homeHelperName: {
         type: String,
         required: false,
     }, workHelperName: {
         type: String,
         required: false,
-    }, dateCreated: {
-        type: Date,
-        default: Date.now
     }
-});
+}));
 
-module.exports = Member = mongoose.model('member', memberSchema); 
+module.exports = Member; 

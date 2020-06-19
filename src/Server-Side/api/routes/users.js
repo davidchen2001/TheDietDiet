@@ -6,7 +6,10 @@ const jwt = require('jsonwebtoken');
 
 const auth = require('../../Database/middleware/auth')
 
-const User = require('../../Database/models/UserModel');
+const User = require('../../Database/models/User');
+const Member = require('../../Database/models/Member');
+const Helper = require('../../Database/models/Helper');
+const Coordinator = require('../../Database/models/Coordinator');
 
 /**
  * @route   POST /api/auth/register
@@ -71,7 +74,7 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
   
-    const { emailAddress, password} = req.body;
+    const {emailAddress, password} = req.body;
   
     // Simple validation
      if( (String(emailAddress) === 0 || String(password) === 0) ) {
@@ -80,7 +83,9 @@ router.post('/login', (req, res) => {
   
      User.findOne({ emailAddress })
      .then(user => {
-         if(!user) return res.status(400).json({ msg: 'User does not exist' });
+         if(!user) {
+           return res.status(400).json({ msg: 'User does not exist' });
+         }
   
         //Validating password
         bcrypt.compare(password, user.password)

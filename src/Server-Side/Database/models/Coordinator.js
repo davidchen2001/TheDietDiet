@@ -1,27 +1,12 @@
 const mongoose = require("mongoose");
+const User = require("./User");
 const Schema = mongoose.Schema;
 
-const coordinatorSchema = new Schema({
-    name: {
+const Coordinator = User.discriminator("Coordinator", new Schema({
+    region: {
         type: String,
-        required: true,
-    },
-    username: {
-        type: String,
-        required: true,
-    },
-    password: {
-        type: String,
-        required: true,
-    },
-    emailAddress: {
-        type: String,
-        required: true,
-    },
-    dateCreated: {
-        type: Date,
-        default: Date.now
-    },
-});
+        required: false
+    }
+}))
 
-module.exports = Coordinator = mongoose.model('coordinator', coordinatorSchema); 
+module.exports = Coordinator;
