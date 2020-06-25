@@ -113,4 +113,3 @@ export default connect(
   mapStateToProps,
   { login, clearErrors }
 )(SignInForm);
-
