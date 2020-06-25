@@ -26,7 +26,7 @@ router.post('/register', (req, res) => {
     return res.status(400).json({ msg: 'Please enter all fields' });
    }
 
-   User.findOne({ emailAddress })
+   User.findOne({$or: [{ emailAddress: emailAddress}, {username: username }] })
    .then(user => {
        if(user)
        {
@@ -83,13 +83,16 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
   
     const {emailAddress, username, password} = req.body;
-  
-    // Simple validation
-     if( (String(emailAddress) === 0 || String(password) === 0) ) {
-      return res.status(400).json({ msg: 'Please enter all fields' });
-     }
 
-     User.findOne({ emailAddress})
+    // Simple validation
+
+    if( (String(emailAddress).length === 0 && String(username).length === 0)  || String(password).length === 0)
+    {
+      return res.status(400).json({ msg: 'Please enter all fields' });
+
+    } 
+
+     User.findOne({$or: [{ emailAddress: emailAddress}, {username: username }] })
      .then(user => {
          if(!user) {
            return res.status(400).json({ msg: 'User does not exist' });
