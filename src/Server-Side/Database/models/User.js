@@ -1,6 +1,11 @@
 const mongoose = require ('mongoose');
 const Schema = mongoose.Schema;
 
+const userOptions = {
+    discriminatorKey: 'userType',
+    collection: 'users', //The name of our collection
+}
+
 const userSchema = new Schema({
     name: {
         type: String,

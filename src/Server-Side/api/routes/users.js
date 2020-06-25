@@ -6,7 +6,11 @@ const jwt = require('jsonwebtoken');
 
 const auth = require('../../Database/middleware/auth')
 
-const User = require('../../Database/models/UserModel');
+const User = require('../../Database/models/User');
+const Member = require('../../Database/models/Member');
+const Helper = require('../../Database/models/Helper');
+const Coordinator = require('../../Database/models/Coordinator');
+const { verify } = require('crypto');
 
 /**
  * @route   POST /api/auth/register
@@ -22,14 +26,21 @@ router.post('/register', (req, res) => {
     return res.status(400).json({ msg: 'Please enter all fields' });
    }
 
-   User.findOne({ emailAddress })
+   User.findOne({$or: [{ emailAddress: emailAddress}, {username: username }] })
    .then(user => {
        if(user)
        {
         return res.status(400).json({ msg: 'User already exists' });
        }
-       
-       const newUser = new User({name, username, emailAddress, password, isHelper});
+      
+       let newUser = new User();
+       if (isHelper)
+       {
+         newUser = new Helper({name, username, emailAddress, password, isHelper})
+       } else 
+       {
+         newUser = new Member({name, username, emailAddress, password, isHelper})
+       }
 
       // Create salt & hash
       bcrypt.genSalt(10, (err, salt) => {
@@ -71,16 +82,20 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
   
-    const { emailAddress, password} = req.body;
-  
+    const {emailAddress, password} = req.body;
+
     // Simple validation
-     if( (String(emailAddress) === 0 || String(password) === 0) ) {
+
+    if( String(emailAddress).length === 0  || String(password).length === 0)
+    {
       return res.status(400).json({ msg: 'Please enter all fields' });
-     }
-  
+    } 
+
      User.findOne({ emailAddress })
      .then(user => {
-         if(!user) return res.status(400).json({ msg: 'User does not exist' });
+         if(!user) {
+           return res.status(400).json({ msg: 'User does not exist' });
+         }
   
         //Validating password
         bcrypt.compare(password, user.password)
