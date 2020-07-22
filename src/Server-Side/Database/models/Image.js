@@ -14,6 +14,10 @@ const ImageSchema = new Schema({
     imageType: {
         type: String,
         required: false
+    },
+    dateCreated: {
+        type: Date,
+        default: Date.now
     }
 });
 

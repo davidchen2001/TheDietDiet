@@ -9,6 +9,10 @@ const Member = User.discriminator('Member', new Schema({
     }, workHelperName: {
         type: String,
         required: false,
+    }, memberStatus: { //0 - not a member yet, 1 - is a member 
+        type: Boolean,
+        required: false,
+        default: 0
     }
 }));
 
