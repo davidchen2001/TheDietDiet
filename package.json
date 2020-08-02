@@ -41,7 +41,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "client": "npm start",
-    "server": "cd src && cd Server-Side && cd Database && node server.js",
+    "server": "cd db && node server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "eslintConfig": {
