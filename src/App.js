@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './App.css';
-import DietDietLogo from '../src/DietDietLogo.jpg'
 import Nut from '../src/duncandoughnuts2.png'
 
 
