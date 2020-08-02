@@ -4,12 +4,12 @@ const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 
-const auth = require('../../Database/middleware/auth')
+const auth = require('../../db/middleware/auth')
 
-const User = require('../../Database/models/User');
-const Member = require('../../Database/models/Member');
-const Helper = require('../../Database/models/Helper');
-const Coordinator = require('../../Database/models/Coordinator');
+const User = require('../../db/models/User');
+const Member = require('../../db/models/Member');
+const Helper = require('../../db/models/Helper');
+const Coordinator = require('../../db/models/Coordinator');
 const { verify } = require('crypto');
 
 /**

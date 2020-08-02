@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router(); 
 
-const Image = require("../../Database/models/Image");
+const Image = require("../../db/models/Image");
 const multer = require("multer")
 
 //Provides the path to the destination folder and defines a filename for the file (an image) uploaded
