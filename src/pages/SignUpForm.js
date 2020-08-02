@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { register } from '../Actions/AuthAction';
-import { clearErrors } from '../Actions/ErrorAction';
+import { register } from '../actions/AuthAction';
+import { clearErrors } from '../actions/ErrorAction';
 
-import AlertComponent from './Components/AlertComponent';
+import AlertComponent from './components/AlertComponent';
 
 class SignUpForm extends Component {
   constructor(){

@@ -15,7 +15,7 @@ import ProfilePage from './pages/ProfilePage';
 import { Provider } from 'react-redux';
 import store from './store';
 
-import { loadUser } from './Actions/AuthAction';
+import { loadUser } from './actions/AuthAction';
 class App extends Component{
   componentDidMount() {
     store.dispatch(loadUser());
