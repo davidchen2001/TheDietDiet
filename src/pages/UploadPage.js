@@ -7,8 +7,8 @@ import Nut from '../duncandoughnuts2.png';
 import ImageUploader from 'react-images-upload';
 
 import { connect } from 'react-redux';
-import {uploadImage} from '../Actions/ImageAction.js'; 
-import {clearErrors} from '../Actions/ErrorAction'; 
+import {uploadImage} from '../actions/ImageAction.js'; 
+import {clearErrors} from '../actions/ErrorAction'; 
 import PropTypes from 'prop-types';
 
 class UploadPage extends Component{

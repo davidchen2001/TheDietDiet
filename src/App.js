@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import './App.css';
-import Popup from 'reactjs-popup'
-import DietDietLogo from '../src/DietDietLogo.jpg'
 import Nut from '../src/duncandoughnuts2.png'
 
 
@@ -15,7 +13,7 @@ import ProfilePage from './pages/ProfilePage';
 import { Provider } from 'react-redux';
 import store from './store';
 
-import { loadUser } from './Actions/AuthAction';
+import { loadUser } from './actions/AuthAction';
 class App extends Component{
   componentDidMount() {
     store.dispatch(loadUser());

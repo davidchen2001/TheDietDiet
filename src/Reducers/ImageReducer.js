@@ -1,4 +1,4 @@
-import { IMAGE_UPLOADED, IMAGE_UPLOAD_ERROR, IMAGE_DELETED, IMAGE_DELETE_ERROR } from '../Actions/types';
+import { IMAGE_UPLOADED, IMAGE_UPLOAD_ERROR, IMAGE_DELETED, IMAGE_DELETE_ERROR } from '../actions/types';
 
 const initialState = {
     isUploaded: false, 
