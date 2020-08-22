@@ -5,7 +5,7 @@ import Gallery from 'react-grid-gallery';
 import '../ProfilePage.css';
 import '../App.css';
 import '../CafesPage.css';
-import Nut from '../duncandoughnuts2.png';
+import Nut from '../assets/DietDietLogo.png';
 
 //https://reactjsexample.com/justified-image-gallery-component-for-react/
 const IMAGES =

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Link, BrowserRouter as Router,  Route } from 'react-router-dom'
 import '../CafesPage.css';
 import '../App.css';
-import Nut from '../duncandoughnuts2.png';
+import Nut from '../assets/DietDietLogo.png';
 import ProgCircle from './CafesComp.js';
 
 /*chart stuff*/

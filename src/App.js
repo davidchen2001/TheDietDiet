@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
-import Nut from '../src/duncandoughnuts2.png'
-
+import Nut from '../src/assets/DietDietLogo.png'
 
 import { BrowserRouter as Router, Route, Link, NavLink } from  'react-router-dom'
+import HomePage from './pages/HomePage/HomePage';
 import SignInForm from './pages/SignInForm';
 import SignUpForm from './pages/SignUpForm';
 import CafesPage from './pages/CafesPage';
@@ -24,25 +24,13 @@ class App extends Component{
     {this.props.children}
       <Provider store={store}>
       <div className="App">
-        <div className="App__Aside">
-          <img src={Nut} alt=" "/>
-        </div>
-        <div className="App__Form">
-        <div className="PageSwitcher">
-          <NavLink to ="/sign-in" activeClassName="PageSwitcher__Item--Active"
-           className="PageSwitcher__Item">Sign In</NavLink>
-          <NavLink exact to ="/" activeClassName="PageSwitcher__Item--Active"
-           className="PageSwitcher__Item">Sign Up</NavLink>
-            </div>
-
-          <div className="FormTitle">
-            <NavLink to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink>or
-            <NavLink exact to="/"activeClassName="FormTitle__Link--Active" 
-            className="FormTitle__Link FormTitle">Sign Up</NavLink>
-          </div>
-
-          <Route exact path="/" component={SignUpForm}>
+        
+          <Route exact path="/" component={HomePage}>
             </Route>
+
+          <Route exact path = "/sign-up" component = {SignUpForm}>
+
+          </Route>
 
           <Route exact path="/sign-in" component={SignInForm}>
           </Route>
@@ -56,7 +44,7 @@ class App extends Component{
           <Route exact path ="/profile" component={ProfilePage}>
           </Route>
 
-          </div>
+          
         </div>
         </Provider>
     </Router>
