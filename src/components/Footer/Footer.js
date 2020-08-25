@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import { Button } from '../../Button';
+import  {Button}  from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
 import {
   FaFacebook,
@@ -73,10 +73,10 @@ function Footer() {
           <div className='footer-logo'>
             <Link to='/' className='social-logo'>
               <MdFingerprint className='navbar-icon' />
-              LAVISH
+              TheDietDiet
             </Link>
           </div>
-          <small className='website-rights'>LAVISH © 2020</small>
+          <small className='website-rights'>TheDietDiet © 2020</small>
           <div className='social-icons'>
             <Link
               className='social-icon-link'
