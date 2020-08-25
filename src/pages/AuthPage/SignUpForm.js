@@ -3,10 +3,18 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { register } from '../actions/AuthAction';
-import { clearErrors } from '../actions/ErrorAction';
+import { register } from '../../actions/AuthAction';
+import { clearErrors } from '../../actions/ErrorAction';
 
-import AlertComponent from './components/AlertComponent';
+import AlertComponent from '../../components/AlertComponent';
+import "./AuthenticationForm.css";
+
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormControl';
+import Checkbox from '@material-ui/core/Checkbox';
 
 class SignUpForm extends Component {
   constructor(){
@@ -16,6 +24,7 @@ class SignUpForm extends Component {
       username: '',
       emailAddress: '',
       password: '',
+      isHelper: false,
       errors: {}
   };
 
@@ -85,8 +94,10 @@ render(){
   const msg = this.state.msg;
 
   return(
-    <div className="FormCenter">
-      <form className="FormFields" onSubmit={this.onSubmit}>
+
+    <div className="Auth">
+      <Paper elevation = {3} className = "Auth__Form">
+      <form className = "FormField" onSubmit={this.onSubmit}>
 
       {msg === "Successfully Registered!"? (
       <AlertComponent color = 'success' text = {JSON.stringify(msg)}></AlertComponent>
@@ -96,52 +107,40 @@ render(){
       <AlertComponent color = 'danger' text = {JSON.stringify(msg)}></AlertComponent>
       ) : null }
 
-      <div className="FormField">
-      <label className="FormField__Label"htmlFor="name">Name</label>
-      <input type="text" id="name" className="FormField__Input" placeholder="Enter full name here" name="name" value={this.state.name} onChange={this.onChange} />
-      </div>
-
-      <div className="FormField">
-      <label className="FormField__Label"htmlFor="name">Username</label>
-      <input type="text" id="username" className="FormField__Input" placeholder="Enter username here" name="username" value={this.state.username} onChange={this.onChange}/>
-      </div>
+      <Typography className = "FormTitle" variant = "h2">Register</Typography>
       
+      <TextField className = "FormField__Input" variant = "outlined" TextField id="outlined-basic" label = "Name" id="name" margin = "normal" onChange={this.onChange} />
       
-      <div className="FormField">
-      <label className="FormField__Label"htmlFor="password">Password</label>
-      <input type="password" id="password" className="FormField__Input" placeholder="Enter password here" name="password" value={this.state.password} onChange={this.onChange}/>
-      </div>
+      <TextField className = "FormField__Input" variant = "outlined" TextField id="outlined-basic" label = "Username" id="username" margin = "normal" onChange={this.onChange} />
+      
+      <TextField className = "FormField__Input" variant = "outlined" TextField id="outlined-basic" label = "Password" id="standard-password-input" margin = "normal" type="password" onChange={this.onChange} />
 
-      <div className="FormField">
-      <label className="FormField__Label"htmlFor="email">Email</label>
-      <input type="email" id="email" className="FormField__Input" placeholder="Enter email here" name="emailAddress" value={this.state.emailAddress} onChange={this.onChange}/>
-      </div>
+      <TextField className = "FormField__Input" name = "email" label = "Email" TextField id="outlined-basic" variant="outlined" margin="normal" id="email"/>
 
-      <div className="FormField">
-      <label className="FormField__CheckboxLabel">
-      <input className="FormField__Checkbox" type="checkbox" name="isHelper" value = {this.state.isHelper} onChange = {this.onChange} /> I am signing up to be a DietDiet 
-      <a href=""className="FormField__TermsLink"> helper</a>
-      </label>    
-      </div>
+      <FormGroup col>
+        <FormControlLabel 
+          control={<Checkbox checked = {this.state.isHelper} onChange={this.onChange} name="isHelper" />}
+          label="I am signing up to be a DietDiet Helper"
+        />
 
-    <div className="FormField">
-      <label className="FormField__CheckboxLabel">
-      <input className="FormField__Checkbox" type="checkbox" name="hasAgreed"/> I have read and agreed to the 
-      <a href=""className="FormField__TermsLink"> terms of service</a>
-      </label>    
-      </div>
+        <FormControlLabel 
+          control={<Checkbox onChange={this.onChange} name="termsOfService" />}
+          label="I have read and agreed to the terms of service"
+        />
+        
+      </FormGroup>
 
     <div className="FormField">
       <button className="FormField__Button mr-30" > Sign up</button><Link to="/sign-in"
       className="FormField__Link">I'm already a member</Link>
       </div>
       </form>
+      </Paper>
   </div>
+
 );
 
-}
-
-}
+}}
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,

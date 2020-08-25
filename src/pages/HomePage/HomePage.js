@@ -1,14 +1,18 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import ToolBar from '@material-ui/core/Toolbar';
 
-import Navbar from "../components/Navbar/Navbar";
+import { homeObjOne} from './Data'
+
+import Navbar from "../../components/Navbar/Navbar";
+import HeroSection from "../../components/HeroSection/HeroSection";
+import Footer from "../../components/Footer/Footer";
 
 const HomePage = () => {
 
     return (
         <div>
-            <Navbar />
+            <Navbar/>
+            <HeroSection {...homeObjOne} />
+            <Footer/>
         </div>
     );
 

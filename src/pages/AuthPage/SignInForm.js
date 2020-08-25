@@ -4,10 +4,15 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { login } from '../actions/AuthAction'; 
-import { clearErrors } from '../actions/ErrorAction';
+import { login } from '../../actions/AuthAction'; 
+import { clearErrors } from '../../actions/ErrorAction';
 
-import AlertComponent from './components/AlertComponent'
+import AlertComponent from '../../components/AlertComponent';
+import "./AuthenticationForm.css";
+
+import Paper from "@material-ui/core/Paper"
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 
 class SignInForm extends Component {
   constructor(){
@@ -70,8 +75,10 @@ onSubmit(e) {
       const msg = this.state.msg 
 
         return(
-            <div className="FormCenter">
-            <form className="FormFields" onSubmit={this.onSubmit}>
+            <div className="Auth">
+
+            <Paper elevation = {3} className = "Auth__Form"> 
+            <form className="FormField" onSubmit={this.onSubmit}>
 
             {msg === "Logged In!" ? (
             <AlertComponent color = "success" text = {JSON.stringify(msg)}></AlertComponent>
@@ -81,23 +88,19 @@ onSubmit(e) {
             <AlertComponent color = 'danger' text = {JSON.stringify(msg)}></AlertComponent>
             ) : null }
 
-            <div className="FormField">
-              <label className="FormField__Label"htmlFor="email">Email</label>
-              <input type="email" id="email" className="FormField__Input" placeholder="Enter email here" name="email"
-              value={this.state.email} onChange={this.onChange}/>
-              </div>
-
-              <div className="FormField">
-              <label className="FormField__Label"htmlFor="password">Password</label>
-              <input type="password" id="password" className="FormField__Input" placeholder="Enter password here" name="password"
-              value={this.state.password} onChange={this.onChange}/>
-              </div>
+            <Typography className = "FormTitle" variant = "h2">Login</Typography>
+      
+            <TextField className = "FormField__Input" name = "email" label = "Email" TextField id="outlined-basic" variant="outlined" margin="normal" id="email"/>
+            
+            <TextField className = "FormField__Input" variant = "outlined" TextField id="outlined-basic" label = "Password" id="standard-password-input" margin = "normal" type="password" onChange={this.onChange} />
 
             <div className="FormField">
-              <button className="FormField__Button mr-30">Log In</button><Link exact to="/"
+              <button className="FormField__Button mr-30">Log In</button><Link exact to="/sign-up"
               className="FormField__Link">Register an account</Link>
               </div>
               </form>
+
+              </Paper>
              </div>
          );
 
