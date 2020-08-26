@@ -1,118 +1,136 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-import { login } from '../../actions/AuthAction'; 
-import { clearErrors } from '../../actions/ErrorAction';
+import { login } from "../../actions/AuthAction";
+import { clearErrors } from "../../actions/ErrorAction";
 
-import AlertComponent from '../../components/AlertComponent';
+import AlertComponent from "../../components/AlertComponent";
 import "./AuthenticationForm.css";
 
-import Paper from "@material-ui/core/Paper"
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
+import Paper from "@material-ui/core/Paper";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
 
 class SignInForm extends Component {
-  constructor(){
+  constructor() {
     super();
-    this.state={
-      emailAddress:'',
-      password:''
+    this.state = {
+      emailAddress: "",
+      password: "",
+    };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  static propTypes = {
+    isAuthenticated: PropTypes.bool,
+    error: PropTypes.object.isRequired,
+    login: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
   };
-  
-  
-  this.onChange = this.onChange.bind(this)
-  this.onSubmit = this.onSubmit.bind(this)
-}
 
-static propTypes = {
-  isAuthenticated: PropTypes.bool,
-  error: PropTypes.object.isRequired,
-  login: PropTypes.func.isRequired,
-  clearErrors: PropTypes.func.isRequired
-}
-
-componentDidUpdate(prevProps) {
-  
-  const { error } = this.props;
-  if (error !== prevProps.error) {
-    if(error.id === 'LOGIN_FAIL') {
-      this.setState({ msg: error.msg }); 
-
-    } else {
-      this.setState({ msg: null });
+  componentDidUpdate(prevProps) {
+    const { error } = this.props;
+    if (error !== prevProps.error) {
+      if (error.id === "LOGIN_FAIL") {
+        this.setState({ msg: error.msg });
+      } else {
+        this.setState({ msg: null });
+      }
     }
   }
 
-}
+  toggle = () => {
+    this.props.clearErrors();
+  };
 
-toggle = () => {
-  this.props.clearErrors();
-}; 
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+    console.log("Something changed on login");
+  }
+  onSubmit(e) {
+    e.preventDefault();
 
+    const newUser = {
+      emailAddress: this.state.email,
+      password: this.state.password,
+    };
 
-onChange(e) {
-  this.setState({ [e.target.name]: e.target.value })
-  console.log("Something changed on login");
-}
-onSubmit(e) {
-  e.preventDefault()
-
-  const newUser = {
-    emailAddress: this.state.email,
-    password: this.state.password,
-    
+    this.props.login(newUser);
+    this.setState({ msg: "Logged In" });
+    console.log("Signed In");
   }
 
-  this.props.login(newUser);
-  this.setState({msg: "Logged In"})
-  console.log("Signed In")
-}
+  render() {
+    const msg = this.state.msg;
 
-    render(){
-      const msg = this.state.msg 
-
-        return(
-            <div className="Auth">
-
-            <Paper elevation = {3} className = "Auth__Form"> 
-            <form className="FormField" onSubmit={this.onSubmit}>
-
+    return (
+      <div className="Auth">
+        <Paper elevation={3} className="Auth__Form">
+          <form className="FormField" onSubmit={this.onSubmit}>
             {msg === "Logged In!" ? (
-            <AlertComponent color = "success" text = {JSON.stringify(msg)}></AlertComponent>
-            ) : null }
+              <AlertComponent
+                color="success"
+                text={JSON.stringify(msg)}
+              ></AlertComponent>
+            ) : null}
 
-            {msg && msg !== "Logged In!"? (
-            <AlertComponent color = 'danger' text = {JSON.stringify(msg)}></AlertComponent>
-            ) : null }
+            {msg && msg !== "Logged In!" ? (
+              <AlertComponent
+                color="danger"
+                text={JSON.stringify(msg)}
+              ></AlertComponent>
+            ) : null}
 
-            <Typography className = "FormTitle" variant = "h2">Login</Typography>
-      
-            <TextField className = "FormField__Input" name = "email" label = "Email" TextField id="outlined-basic" variant="outlined" margin="normal" id="email"/>
-            
-            <TextField className = "FormField__Input" variant = "outlined" TextField id="outlined-basic" label = "Password" id="standard-password-input" margin = "normal" type="password" onChange={this.onChange} />
+            <Typography className="FormTitle" variant="h2">
+              Login
+            </Typography>
+
+            <TextField
+              className="FormField__Input"
+              name="email"
+              label="Email"
+              TextField
+              id="outlined-basic"
+              variant="outlined"
+              margin="normal"
+              id="email"
+              onChange = {this.onChange}
+            />
+
+            <TextField
+              className="FormField__Input"
+              variant="outlined"
+              TextField
+              id="outlined-basic"
+              label="Password"
+              id="standard-password-input"
+              margin="normal"
+              type="password"
+              name = "password"
+              onChange={this.onChange}
+            />
 
             <div className="FormField">
-              <button className="FormField__Button mr-30">Log In</button><Link exact to="/sign-up"
-              className="FormField__Link">Register an account</Link>
-              </div>
-              </form>
-
-              </Paper>
-             </div>
-         );
-
-     }
+              <button className="FormField__Button mr-30">Log In</button>
+              <Link exact to="/sign-up" className="FormField__Link">
+                Register an account
+              </Link>
+            </div>
+          </form>
+        </Paper>
+      </div>
+    );
+  }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  error: state.error
+  error: state.error,
 });
 
-export default connect(
-  mapStateToProps,
-  { login, clearErrors }
-)(SignInForm);
+export default connect(mapStateToProps, { login, clearErrors })(SignInForm);
