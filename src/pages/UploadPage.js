@@ -3,7 +3,7 @@ import { Link, BrowserRouter as Router,  Route } from 'react-router-dom'
 import '../UploadPage.css';
 import '../CafesPage.css';
 import '../App.css';
-import Nut from '../duncandoughnuts2.png';
+import Nut from '../assets/DietDietLogo.png';
 import ImageUploader from 'react-images-upload';
 
 import { connect } from 'react-redux';
