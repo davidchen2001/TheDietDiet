@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.5.2",
@@ -33,7 +35,6 @@
     "react-scripts": "^3.4.3",
     "react-tooltip": "^4.2.8",
     "reactjs-popup": "^1.5.0",
-    "reactstrap": "^8.5.1",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "serialize-javascript": "^2.1.2"
