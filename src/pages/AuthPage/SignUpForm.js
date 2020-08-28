@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { register } from "../../actions/AuthAction";
 import { clearErrors } from "../../actions/ErrorAction";
 
-import AlertComponent from "../../components/AlertComponent";
+import Alert from "../../components/Alert/Alert";
 import "./AuthenticationForm.css";
 
 import Paper from "@material-ui/core/Paper";
@@ -92,17 +92,17 @@ class SignUpForm extends Component {
         <Paper elevation={3} className="Auth__Form">
           <form className="FormField" onSubmit={this.onSubmit}>
             {msg === "Successfully Registered!" ? (
-              <AlertComponent
+              <Alert
                 color="success"
                 text={JSON.stringify(msg)}
-              ></AlertComponent>
+              ></Alert>
             ) : null}
 
             {msg && msg !== "Successfully Registered!" ? (
-              <AlertComponent
-                color="danger"
+              <Alert
+                color="error"
                 text={JSON.stringify(msg)}
-              ></AlertComponent>
+              ></Alert>
             ) : null}
 
             <Typography className="FormTitle" variant="h2">
