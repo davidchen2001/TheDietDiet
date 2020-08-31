@@ -41,6 +41,8 @@ Enter the contents below into default.json and with <Your MongoDB URI> replaced 
 }
 ```
 
+Note: The config folder has already been included in .gitignore. Please do not remove it. Never commit database credentials to any version of this repository (or any public repository).
+
 ## Available Scripts
 
 In the project directory, you can run:
