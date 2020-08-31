@@ -1,26 +1,24 @@
-Health and Wellness Web App 
+# TheDietDiet
 
-## Available Scripts
+Health and Wellness Web Application  
 
-In the project directory, you can run:
+## Installation 
 
-### `npm start`
+To get this project up and running, first clone the repository
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash 
+git clone https://github.com/Dioceus/TheDietDiet.git
+```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+In the root folder of the repository, install the dependencies. Run (from terminal or cmd):
 
-### `npm run server`
+```bash 
+npm install 
+```
 
-Runs the Express server on port 5000.<br>
+Ensure you are running Node.js 10.16 +
 
-### `npm run dev`
-
-Runs the app and the server concurrently<br>
-
-## Run the Project 
+## Usage
 
 1) Create a MongoDB Atlas Account Here: https://www.mongodb.com/cloud/atlas
 
@@ -30,4 +28,38 @@ Runs the app and the server concurrently<br>
 
 4) Under Security, go to Network Access, and ensure your IP is whitelisted
 
-5) In Clusters, Under Connect, select the Connect your application option and copy the URI to the default.json file under the config folder of this project under Database 
+5) In Clusters, Under Connect, select the Connect your application option to retrieve your MongoDB URI 
+
+6) Navigate to /db, and create a new folder config. Navigate to /db/config, and create a new file, default.json.
+
+Enter the contents below into default.json and with <Your MongoDB URI> replaced with your MongoDB URI.
+
+```javascript
+{
+    "mongoURI": <Your MongoDB URI>,
+    "jwtSecret": "myJwtSecret",
+}
+```
+
+Note: The config folder has already been included in .gitignore. Please do not remove it. Never commit database credentials to any version of this repository (or any public repository).
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.
+You will also see any lint errors in the console.
+
+### `npm run server`
+
+Runs the Express server on port 5000 
+
+### `npm run dev`
+
+Runs the app and the server concurrently
+
