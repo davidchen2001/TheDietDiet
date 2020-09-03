@@ -10,7 +10,6 @@ const User = require('../../db/models/User');
 const Member = require('../../db/models/Member');
 const Helper = require('../../db/models/Helper');
 const Coordinator = require('../../db/models/Coordinator');
-const { verify } = require('crypto');
 
 /**
  * @route   POST /api/auth/register
@@ -22,7 +21,7 @@ router.post('/register', (req, res) => {
   const { name, username, emailAddress, password, isHelper } = req.body;
 
   // Simple validation
-  if (String(name).length === 0 || String(username).length === 0 || String(emailAddress).length === 0 || String(password).length === 0) { //|| !username || !emailAddress || !password
+  if (String(name).length === 0 || String(username).length === 0 || String(emailAddress).length === 0 || String(password).length === 0) {
     return res.status(400).json({ msg: 'Please enter all fields' });
    }
 
@@ -86,7 +85,7 @@ router.post('/login', (req, res) => {
 
     // Simple validation
 
-    if( String(emailAddress).length === 0  || String(password).length === 0)
+    if(String(emailAddress).length === 0  || String(password).length === 0)
     {
       return res.status(400).json({ msg: 'Please enter all fields' });
     } 
