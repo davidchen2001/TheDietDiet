@@ -9,7 +9,7 @@ import SignUpForm from './pages/AuthPage/SignUpForm';
 import CafesPage from './pages/CafesPage';
 import UploadPage from './pages/UploadPage';
 import ProfilePage from './pages/ProfilePage';
-    
+
 import { Provider } from 'react-redux';
 import store from './store';
 

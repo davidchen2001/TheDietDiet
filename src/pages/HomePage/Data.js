@@ -1,7 +1,7 @@
 export const homeObjOne = {
-    lightBg: false,
-    lightText: true,
-    lightTextDesc: true,
+    lightBg: true,
+    lightText: false,
+    lightTextDesc: false,
     topLine: "TheDietDiet",
     headline: "Health and Wellness Web App",
     description: "Welcome!",
